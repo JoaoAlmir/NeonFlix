@@ -25,9 +25,9 @@ export function FlipWordsDemo() {
         (<div className="h-[40rem] flex justify-center items-center px-6">
             <div
                 className="text-6xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
-                Assista
-                <b><FlipWords words={words} /> <br /></b>
-                <span>{"na "}</span> 
+                <span style={{color:"white"}} >Assista</span>
+                <b className="borderText"><FlipWords words={words} /> <br /></b>
+                <span style={{color:"white"}}>{"na "}</span> 
                 <span className="neonText">NeonFlix</span>
 
             </div>

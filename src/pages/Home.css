@@ -53,6 +53,15 @@ h1 {
     animation: neon 1.5s infinite alternate;
 }
 
+.borderText{
+    color: #fff;
+    text-shadow:
+        0 0 2px #ffffff,
+        0 0 3px #ffffff,
+        0 0 4px #ffffff,
+        0 0 8px #ffffff;
+}
+
 .background {
     border: 1px solid #ff00ff1f;
     box-shadow:
