@@ -12,7 +12,7 @@ return (
             
             <CardItem translateZ="100" className="w-full">
                 <img
-                    src="https://i.redd.it/k0cih8w4ohu21.gif"
+                    src="https://gifdb.com/images/high/neon-car-cyberpunk-art-sc2jgh69hg0utton.gif"
                     height="1000"
                     width="1000"
                     className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
