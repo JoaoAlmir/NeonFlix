@@ -37,7 +37,7 @@ const Home = () => {
                     </div>
                 </ParallaxLayer>
 
-                <ParallaxLayer offset={2.4} speed={0.5}>
+                <ParallaxLayer offset={2.3} speed={0.5}>
                     <div className='background'>
                         <HeroParallaxDemo />
                     </div>
