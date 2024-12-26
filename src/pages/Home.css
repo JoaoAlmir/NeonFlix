@@ -10,3 +10,42 @@ h1{
     font-family: 'Courier New', monospace;
 
 }
+
+@keyframes neon {
+    0%, 100% {
+        text-shadow:
+          0 0 7px #ffffff,
+          0 0 10px #bb21bb,
+          0 0 21px #da25d0,
+          0 0 42px rgb(55, 0, 255),
+          0 0 82px rgb(4, 0, 255),
+          0 0 92px rgb(222, 66, 236),
+          0 0 102px rgb(67, 56, 221),
+          0 0 151px rgb(116, 52, 233);
+    }
+    50% {
+        text-shadow:
+          0 0 14px #ffffff,
+          0 0 20px #bb21bb,
+          0 0 42px #da25d0,
+          0 0 84px rgb(55, 0, 255),
+          0 0 164px rgb(4, 0, 255),
+          0 0 184px rgb(222, 66, 236),
+          0 0 204px rgb(67, 56, 221),
+          0 0 302px rgb(116, 52, 233);
+    }
+}
+
+.neonText {
+    color: #fff;
+    text-shadow:
+      0 0 7px #551ed693,
+      0 0 10px #bb21bb,
+      0 0 21px #da25d16b,
+      0 0 42px rgb(55, 0, 255),
+      0 0 82px rgba(4, 0, 255, 0.26),
+      0 0 92px rgb(222, 66, 236),
+      0 0 102px rgb(67, 56, 221),
+      0 0 151px rgb(116, 52, 233);
+    animation: neon 1.5s infinite alternate;
+}
