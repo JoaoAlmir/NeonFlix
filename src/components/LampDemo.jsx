@@ -15,7 +15,7 @@ export function LampDemo() {
           ease: "easeInOut",
         }}
         className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
-        +999 experiências te aguardam
+        milhares de experiências te aguardam
       </motion.h1>
     </LampContainer>)
   );

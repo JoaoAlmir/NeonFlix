@@ -75,6 +75,10 @@ h1 {
 
 .background-people{
     margin-top: -50vh;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tv-people-image{

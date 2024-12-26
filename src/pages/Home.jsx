@@ -12,27 +12,39 @@ import { HeroParallaxDemo } from '../components/HeroParallaxDemo';
 const Home = () => {
     return (
         <>
-            <div className='background'>
-                <BackgroundGradientAnimationDemo/>
-            </div>
+            <Parallax pages={4}>
+                <ParallaxLayer offset={0} speed={0.5}>
+                    <div className='background'>
+                        <BackgroundGradientAnimationDemo />
+                    </div>
+                </ParallaxLayer>
 
-            <div className='background bg-gray-950'>
-                <ThreeDCardDemo />
-            </div>
-            
-            <div className='background-people'>
-                <img src={imgPeople} alt="TV People" className="tv-people-image" />
-            </div>
+                <ParallaxLayer offset={0.99} speed={0.1}>
+                    <div className='background bg-gray-950'>
+                        <ThreeDCardDemo />
+                    </div>
+                </ParallaxLayer>
 
-            <div className='background'>
-                <LampDemo />
-            </div>
+                <ParallaxLayer offset={1.3} speed={0.6} >
+                    <div className='background-people'>
+                        <img src={imgPeople} alt="TV People" className="tv-people-image" />
+                    </div>
+                </ParallaxLayer>
 
-            <div className='background'>
-                <HeroParallaxDemo/>
-            </div>
+                <ParallaxLayer offset={1.8} speed={0.5}>
+                    <div className='background'>
+                        <LampDemo />
+                    </div>
+                </ParallaxLayer>
+
+                <ParallaxLayer offset={2.4} speed={0.5}>
+                    <div className='background'>
+                        <HeroParallaxDemo />
+                    </div>
+                </ParallaxLayer>
+            </Parallax>
         </>
     );
 };
 
-export default Home;
+            export default Home;
