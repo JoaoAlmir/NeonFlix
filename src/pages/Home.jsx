@@ -44,11 +44,11 @@ const Home = () => {
             </div>
 
             <div className='background'>
-                <LampDemo />
-            </div>
-
-            <div className='background'>
                 <HeroParallaxDemo />
+            </div>
+            
+            <div className='background'>
+                <LampDemo />
             </div>
         </>
     );
