@@ -1,51 +1,83 @@
-.home{
+.home {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-h1{
+h1 {
     font-size: 5vw;
     font-family: 'Courier New', monospace;
 
 }
 
 @keyframes neon {
-    0%, 100% {
+
+    0%,
+    100% {
         text-shadow:
-          0 0 7px #ffffff,
-          0 0 10px #bb21bb,
-          0 0 21px #da25d0,
-          0 0 42px rgb(55, 0, 255),
-          0 0 82px rgb(4, 0, 255),
-          0 0 92px rgb(222, 66, 236),
-          0 0 102px rgb(67, 56, 221),
-          0 0 151px rgb(116, 52, 233);
+            0 0 7px #ffffff,
+            0 0 10px #bb21bb,
+            0 0 21px #da25d0,
+            0 0 42px rgb(55, 0, 255),
+            0 0 82px rgb(4, 0, 255),
+            0 0 92px rgb(222, 66, 236),
+            0 0 102px rgb(67, 56, 221),
+            0 0 151px rgb(116, 52, 233);
     }
+
     50% {
         text-shadow:
-          0 0 14px #ffffff,
-          0 0 20px #bb21bb,
-          0 0 42px #da25d0,
-          0 0 84px rgb(55, 0, 255),
-          0 0 164px rgb(4, 0, 255),
-          0 0 184px rgb(222, 66, 236),
-          0 0 204px rgb(67, 56, 221),
-          0 0 302px rgb(116, 52, 233);
+            0 0 14px #ffffff,
+            0 0 20px #bb21bb,
+            0 0 42px #da25d0,
+            0 0 84px rgb(55, 0, 255),
+            0 0 164px rgb(4, 0, 255),
+            0 0 184px rgb(222, 66, 236),
+            0 0 204px rgb(67, 56, 221),
+            0 0 302px rgb(116, 52, 233);
     }
 }
 
 .neonText {
     color: #fff;
     text-shadow:
-      0 0 7px #551ed693,
-      0 0 10px #bb21bb,
-      0 0 21px #da25d16b,
-      0 0 42px rgb(55, 0, 255),
-      0 0 82px rgba(4, 0, 255, 0.26),
-      0 0 92px rgb(222, 66, 236),
-      0 0 102px rgb(67, 56, 221),
-      0 0 151px rgb(116, 52, 233);
+        0 0 7px #551ed693,
+        0 0 10px #bb21bb,
+        0 0 21px #da25d16b,
+        0 0 42px rgb(55, 0, 255),
+        0 0 82px rgba(4, 0, 255, 0.26),
+        0 0 92px rgb(222, 66, 236),
+        0 0 102px rgb(67, 56, 221),
+        0 0 151px rgb(116, 52, 233);
     animation: neon 1.5s infinite alternate;
+}
+
+.background {
+    border: 1px solid #ff00ff1f;
+    box-shadow:
+        0 0 5px #ff00ff28,
+        0 0 10px #ff00ff18,
+        0 0 15px #ff00ff13,
+        0 0 20px #ff00ff18,
+        0 0 25px #ff00ff1e;
+}
+
+.bg-people {
+    background-image: url('../assets/tvpeople.png');
+    background-size: cover;
+    background-position: center;
+    height: 12vh;
+    padding-top: 100vh;
+    animation: darkenBackground 3s infinite alternate;
+}
+
+@keyframes darkenBackground {
+    0% {
+        filter: brightness(0.1) sepia(1) hue-rotate(250deg) saturate(5);
+    }
+
+    100% {
+        filter: brightness(0.3) sepia(1) hue-rotate(250deg) saturate(5);
+    }
 }

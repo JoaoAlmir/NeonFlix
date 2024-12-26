@@ -6,3 +6,21 @@
     background-color: #141414;
     color: whitesmoke;
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #141414;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #1b1646;
+    box-shadow: 0 0 10px rgb(225, 0, 255), 0 0 20px rgb(212, 0, 255), 0 0 30px rgb(145, 75, 167), 0 0 40px rgb(231, 55, 222);
+    border-radius: 900px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}

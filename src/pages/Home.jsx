@@ -8,13 +8,17 @@ import { ThreeDCardDemo } from '../components/ThreeDCardDemo';
 const Home = () => {
     return (
         <>
-            <div className='parallax-content'>
+            <div className='background'>
                 <FlipWordsDemo />
             </div>
 
-            <div className='parallax-content'>
+            <div className='background bg-gray-950'>
                 <ThreeDCardDemo />
+                
             </div>
+            <div className='bg-people ' />
+
+
         </>
     );
 };

@@ -19,7 +19,6 @@ export function FlipWordsDemo() {
             "Biografia",
             "História",
             "Mistério",
-            "Faroeste"
         ]
 
     return (
