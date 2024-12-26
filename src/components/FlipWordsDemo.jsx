@@ -15,8 +15,6 @@ export function FlipWordsDemo() {
             "Fantasia",
             "Animação",
             "Documentário",
-            "Musical",
-            "Biografia",
             "História",
             "Mistério",
         ]
