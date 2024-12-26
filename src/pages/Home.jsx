@@ -6,6 +6,8 @@ import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import { ThreeDCardDemo } from '../components/ThreeDCardDemo';
 import { BackgroundGradientAnimationDemo } from '../components/BackgroundGradientAnimationDemo';
 import imgPeople from '../assets/tvpeople.png';
+import { HeroParallax } from '../components/config/hero-parallax';
+import { HeroParallaxDemo } from '../components/HeroParallaxDemo';
 
 const Home = () => {
     return (
@@ -24,6 +26,10 @@ const Home = () => {
 
             <div className='background'>
                 <LampDemo />
+            </div>
+
+            <div className='background'>
+                <HeroParallaxDemo/>
             </div>
         </>
     );
