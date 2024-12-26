@@ -72,13 +72,15 @@ h1 {
         0 0 25px #ff00ff1e;
 }
 
-.bg-people {
-    background-image: url('../assets/tvpeople.png');
-    background-size: cover;
-    background-position: center;
-    height: 12vh;
-    padding-top: 100vh;
+
+.background-people{
+    margin-top: -50vh;
+}
+
+.tv-people-image{
     animation: darkenBackground 3s infinite alternate;
+    pointer-events: none;
+
 }
 
 @keyframes darkenBackground {
