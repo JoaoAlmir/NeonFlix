@@ -1,7 +1,7 @@
-"use client";
-
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "./config/3d-card";
+import tvGif from "../assets/tvGif.gif";
+
 
 export function ThreeDCardDemo() {
 return (
@@ -12,7 +12,7 @@ return (
             
             <CardItem translateZ="100" className="w-full">
                 <img
-                    src="https://gifdb.com/images/high/neon-car-cyberpunk-art-sc2jgh69hg0utton.gif"
+                    src={tvGif}
                     height="1000"
                     width="1000"
                     className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"

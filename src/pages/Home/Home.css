@@ -7,8 +7,13 @@
 
 h1 {
     font-size: 5vw;
-    font-family: 'Courier New', monospace;
+    font-family: 'cursive', monospace;
 
+}
+
+h2 {
+    font-size: 2.5vw;
+    font-family: 'cursive', monospace;
 }
 
 @keyframes neon {
@@ -87,7 +92,7 @@ h1 {
 
 
 .tv-people-image{
-    animation: darkenBackground 3s infinite alternate;
+    animation: darkenBackground 2s infinite alternate;
     pointer-events: none;
     width: 100%;
     height: auto;
@@ -96,12 +101,26 @@ h1 {
 
 @keyframes darkenBackground {
     0% {
-        filter: brightness(0.1) sepia(1) hue-rotate(270deg) saturate(5);
+        filter: brightness(0.08) sepia(1) hue-rotate(270deg) saturate(5);
     }
     50% {
-        filter: brightness(0.2) sepia(1) hue-rotate(180deg) saturate(5);
+        filter: brightness(0.15) sepia(1) hue-rotate(270deg) saturate(5);
     }
     100% {
-        filter: brightness(0.05) sepia(1) hue-rotate(270deg) saturate(5);
+        filter: brightness(0.08) sepia(1) hue-rotate(270deg) saturate(5);
     }
+}
+
+.tvDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4vh;
+}
+
+.family{
+    display: flex;
+    filter: drop-shadow(0 0 40px white);
+    font-weight: bold;
 }
