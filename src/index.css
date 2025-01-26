@@ -4,20 +4,11 @@
 
 :root{
     color: whitesmoke;
-    cursor: none;
-
-}
-
-
-
-button{
-    cursor: none;
 }
 
 body{
     overflow-x: hidden;
     background-color: #000000;
-
 }
 
 ::-webkit-scrollbar {
