@@ -58,6 +58,24 @@ h2 {
     animation: neon 1.5s infinite alternate;
 }
 
+.neonTextLower {
+    color: #fff;
+    text-shadow:
+        0 0 3px #551ed693,
+        0 0 3px #bb21bb,
+        0 0 3px #da25d16b,
+        0 0 3px rgb(55, 0, 255),
+        0 0 3px rgba(4, 0, 255, 0.26),
+        0 0 3px rgb(222, 66, 236),
+        0 0 3px rgb(67, 56, 221),
+        0 0 3px rgb(116, 52, 233);
+    animation: neon 1.5s infinite alternate;
+}
+
+.neonText:hover {
+    animation: neon 1s infinite alternate;
+}
+
 .borderText{
     color: #fff;
     text-shadow:

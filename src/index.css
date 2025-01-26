@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root{
-    background-color: #000000;
     color: whitesmoke;
     cursor: none;
 
 }
+
 
 
 button{
@@ -16,6 +16,8 @@ button{
 
 body{
     overflow-x: hidden;
+    background-color: #000000;
+
 }
 
 ::-webkit-scrollbar {
