@@ -1,0 +1,10 @@
+#cursor{
+    z-index: 100;
+    width: 2vh;
+    height: 2.5 vh;
+    pointer-events: none;
+    overflow: hidden;
+    transform: translate3d(0,0,0);
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0);
+}

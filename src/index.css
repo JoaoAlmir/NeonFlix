@@ -5,6 +5,13 @@
 :root{
     background-color: #000000;
     color: whitesmoke;
+    cursor: none;
+
+}
+
+
+button{
+    cursor: none;
 }
 
 body{
