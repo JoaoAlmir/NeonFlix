@@ -84,7 +84,7 @@ const Dashboard = () => {
         });
 
         setTimeout(() => {
-            fetchMovies(chaveApi,page,currentCategory);
+            fetchMovies(chaveApi, page, currentCategory).then(mov => setData(mov));
         }, 500);
     };
 
