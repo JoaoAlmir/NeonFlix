@@ -9,9 +9,12 @@ import MovieCard from '../../components/movieCard/MovieCard';
 import SearchIcon from '@mui/icons-material/Search';
 import Carrosel from '../../components/carrossel/Carrosel';
 import { fetchMovies, fetchRandomMovie, fetchTopRatedMovies, fetchPopularMovies } from '../../api/MovieApi';
+import { useNavigate } from 'react-router-dom';
 
 
 const Dashboard = () => {
+    const nav = useNavigate()
+
     const [currentTab, setCurrentTab] = React.useState('filmes');
     const [currentCategory, setCurrentCategory] = React.useState(null);
     const [isSidebarHovered, setIsSidebarHovered] = React.useState(false);
@@ -107,7 +110,7 @@ const Dashboard = () => {
                     onMouseEnter={() => setIsSidebarHovered(true)}
                     onMouseLeave={() => setIsSidebarHovered(false)}
                 >
-                    <label className='neonTextLower'>{isSidebarHovered ? 'NeonFlix' : 'NF'}</label>
+                    <label className='neonTextLower' onClick={()=>{nav('/')}} >{isSidebarHovered ? 'NeonFlix' : 'NF'} </label>
                     <div className='sidebar-menu'>
                         <div className='icon-sidebar' onClick={() => setCurrentTab('filmes')}>
                             <ViewAgendaIcon style={{ color: currentTab === 'filmes' ? 'rgb(171, 20, 209)' : 'white' }} />
@@ -133,18 +136,18 @@ const Dashboard = () => {
                                 <button onClick={() => { setCategory("comedia") }} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</button>
                                 <button onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</button>
                                 <span onInput={() => { setSearchQuery(document.getElementById('search-input').value)
-                                }} onClick={() => { setCategory("busca"); document.getElementById('search-input').focus() }} style={{ color: currentCategory === 'busca' ? 'rgb(171, 20, 209)' : 'white' }}  ><SearchIcon /> <input value={searchQuery} id='search-input' /></span>
+                                }} onClick={() => { setCategory("busca"); document.getElementById('search-input').focus() }} style={{ color: currentCategory === 'busca' ? 'rgb(171, 20, 209)' : 'white' }}  ><SearchIcon  style={{fontSize:"3vh"}}/> <input value={searchQuery} id='search-input' /></span>
 
                             </div>
                             {!currentCategory && <div className='showcase fade-in' >
                                 <div>
                                     <h1>Populares</h1>
-                                    <Carrosel movies={topMovies} />
+                                    <Carrosel movies={popularMovies} />
 
                                 </div>
                                 <div>
                                     <h1>Melhores notas</h1>
-                                    <Carrosel movies={popularMovies} />
+                                    <Carrosel movies={topMovies} />
                                 </div>
 
                                 <div>
