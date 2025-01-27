@@ -31,7 +31,7 @@ const Home = () => {
     const adjustedGap = Math.max(minGap, Math.min(maxGap, gap));
 
     return (
-        <>
+        <div className='home-container'>
             <div className='neon-border'>
                 <BackgroundGradientAnimationDemo />
             </div>
@@ -68,7 +68,7 @@ const Home = () => {
             <div className='neon-border'>
                 <LampDemo />
             </div>
-        </>
+        </div>
     );
 };
 

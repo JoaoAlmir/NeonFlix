@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import MovieCard from '../movieCard/MovieCard'; // Componente para o card do filme
 import './Carrosel.css';
 
-const Carrosel = ({ movies }) => {
+const Carrosel = ({ movies, setInfoMovie, setModalIsOpen}) => {
     const carroselRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
 
@@ -43,6 +43,10 @@ const Carrosel = ({ movies }) => {
             <div className="carrosel-container" ref={carroselRef}>
                 {movies.map((movie) => (
                     <MovieCard
+                        onClick={() => {
+                            setInfoMovie(movie);
+                            setModalIsOpen(true);
+                        }}
                         key={movie.id}
                         title={movie.title}
                         description={movie.overview ? movie.overview.substring(0, 120) + '...' : null}

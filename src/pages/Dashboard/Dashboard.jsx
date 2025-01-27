@@ -143,17 +143,17 @@ const Dashboard = () => {
                             {!currentCategory && <div className='showcase fade-in' >
                                 <div>
                                     <h1>Populares</h1>
-                                    <Carrosel movies={popularMovies} />
+                                    <Carrosel movies={popularMovies} setInfoMovie={setInfoMovie} setModalIsOpen={setModalIsOpen} />
 
                                 </div>
                                 <div>
                                     <h1>Melhores notas</h1>
-                                    <Carrosel movies={topMovies} />
+                                    <Carrosel movies={topMovies} setInfoMovie={setInfoMovie} setModalIsOpen={setModalIsOpen} />
                                 </div>
 
                                 <div>
                                     <h1>Deixe a sorte decidir</h1>
-                                    <Carrosel movies={randomMovies} />
+                                    <Carrosel movies={randomMovies} setInfoMovie={setInfoMovie} setModalIsOpen={setModalIsOpen} />
                                 </div>
 
                             </div>}
@@ -163,7 +163,6 @@ const Dashboard = () => {
                                         onClick={() => {
                                             setInfoMovie(movie);
                                             setModalIsOpen(true);
-                                            console.log('teste');
                                         }}
                                         key={movie.id}
                                         title={movie.title}
@@ -225,13 +224,14 @@ const Dashboard = () => {
                         </div>}
 
                         {infoMovie && (
-                            <Modal
+                            <Modal className="fade-in-fast"
                                 open={modalIsOpen}
                                 onClose={() => setModalIsOpen(false)}
                                 aria-labelledby="modal-title"
                                 aria-describedby="modal-description"
+                                style={{ cursor: 'none' }}
                             >
-                                <div className="modal-content neon-border">
+                                <div className="modal-content neon-border-strong">
                                     <div className="modal-left">
                                         <h2 id="modal-title">{infoMovie.title}</h2>
                                         <p id="modal-description">{infoMovie.overview}</p>
@@ -239,7 +239,7 @@ const Dashboard = () => {
                                     <div className="modal-right">
                                         <img src={`https://image.tmdb.org/t/p/w500${infoMovie.backdrop_path}`} alt={infoMovie.title} />
                                         <div className="modal-info">
-                                            <p>Nota: {infoMovie.vote_average}</p>
+                                            <p>Nota: {infoMovie.vote_average.toFixed(1)}</p>
                                             <p>Qtd votos: {infoMovie.vote_count}</p>
                                             <p>{new Date(infoMovie.release_date).toLocaleDateString('pt-BR')}</p>
                                         </div>

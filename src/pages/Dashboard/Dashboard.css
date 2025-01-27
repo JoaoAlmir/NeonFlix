@@ -119,6 +119,11 @@ label {
 
 }
 
+.fade-in-fast {
+    
+    animation: fadeIn 0.7s forwards;
+}
+
 
 
 .fade-out {
@@ -297,6 +302,11 @@ button {
     flex-direction: column;
     gap: 3vh;
     padding: 0 5vw;
+
+    p{
+        font-size: 2vh;
+        font-weight: 400;
+    }
 }
 
 .modal-right{
@@ -309,7 +319,7 @@ button {
     }
 
     img:hover{
-        filter: brightness(0.5);
+        filter: brightness(0.2);
 
     }
 
@@ -317,11 +327,11 @@ button {
         font-size: 2vh;
         font-weight: 600;
     }
-}
 
-body:not(.modal-open) {
-    cursor: none;
-}
+    }
+    
+
+
 
 .modal-open {
     cursor: default;
@@ -332,3 +342,4 @@ body:not(.modal-open) {
     justify-content: space-between;
     padding: 0 2vw;
 }
+
