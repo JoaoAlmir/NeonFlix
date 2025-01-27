@@ -43,6 +43,9 @@ const Dashboard = () => {
         if (cat === currentCategory) {
             setCurrentCategory(null);
         }
+        else if (cat === 'busca') {
+            setCurrentCategory('busca')
+        }
 
         else {
             const allMovies = document.querySelectorAll('.filmes-grid');
@@ -122,7 +125,7 @@ const Dashboard = () => {
                                 <button onClick={() => { setCategory("drama") }} style={{ color: currentCategory === 'drama' ? 'rgb(171, 20, 209)' : 'white' }}>Drama</button>
                                 <button onClick={() => { setCategory("comedia") }} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</button>
                                 <button onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</button>
-                                <button style={{ padding: '0 1vw' }} ><SearchIcon /></button>
+                                <span onClick={() => { setCategory("busca")}} style={{ color: currentCategory === 'busca' ? 'rgb(171, 20, 209)' : 'white' }}  ><SearchIcon /> <input/></span>
                             </div>
                             {!currentCategory && <div className='showcase fade-in' >
                                 <div>

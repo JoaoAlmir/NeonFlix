@@ -8,6 +8,7 @@
         animation: typing 2s steps(30, end), blink-caret 0.5s step-end infinite;
         white-space: nowrap;
         overflow: hidden;
+        user-select: none;
     }
 
     @keyframes typing {
@@ -165,8 +166,7 @@ label {
 
 .categorias {
     display: flex;
-    gap: 4.5vw;
-    margin-left: 1.8vw;
+    gap: 3.5vw;
     user-select: none;
     border-radius: 200px;
     padding: 1vh 2vw;
@@ -185,6 +185,26 @@ label {
         background-color: rgba(144, 26, 199, 0.329);
     }
 
+    input{
+        background-color: rgb(14, 14, 14);
+    }
+
+    span{
+        display: flex;
+        border: 2px solid rgba(144, 26, 199, 0.5);
+        padding: 2vh 1vw;
+        border-radius: 200px;
+
+        input{
+            cursor: none;
+            height: 2vh;
+            width: 7vw;
+        }
+        input:focus {
+            outline: none;
+        }
+
+    }
 
 }
 
