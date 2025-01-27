@@ -8,6 +8,7 @@ import { CustomMouse } from '../../components/customMouse/CustomMouse';
 import MovieCard from '../../components/movieCard/MovieCard';
 import SearchIcon from '@mui/icons-material/Search';
 import Carrosel from '../../components/carrossel/Carrosel';
+import { fetchMovies ,fetchRandomMovie, fetchTopRatedMovies, fetchPopularMovies } from '../../api/MovieApi';
 
 
 const Dashboard = () => {
@@ -23,76 +24,19 @@ const Dashboard = () => {
     const chaveApi = import.meta.env.VITE_CHAVEAPI;
 
 
-    const dictCategories = {
-        "acao": 28,
-        "aventura": 12,
-        "drama": 18,
-        "comedia": 35,
-        "infantil": 10751
-    }
+    
 
-    const fetchMovies = async (page = 1) => {
-        try {
-            let cat = dictCategories[currentCategory];
-            let url = `https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=1`;
-            if (currentCategory) {
-                url = `https://api.themoviedb.org/3/discover/movie?api_key=${chaveApi}&language=pt-BR&with_genres=${cat}&page=${page}`;
-            }
-            const response = await fetch(url);
-            const res = await response.json();
-            setData(res);
-            console.log(res);
-        } catch (error) {
-            console.error('Error fetching movies:', error);
-        }
-    };
 
     useEffect(() => {
-        const fetchPopularMovies = async () => {
-            try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=1`);
-                const res = await response.json();
-                const topMov = res.results.slice(0, 15);
-                setTopMovies(topMov);
-            } catch (error) {
-                console.error('Error fetching popular movies:', error);
-            }
-        };
-
-        const fetchTopRatedMovies = async () => {
-            try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${chaveApi}&language=pt-BR&page=1
-`);
-                const res = await response.json();
-                const popMov = res.results.slice(0, 15);
-                setPopularMovies(popMov);
-            } catch (error) {
-                console.error('Error fetching top rated movies:', error);
-            }
-        };
-
-        const fetchRandomMovie = async () => {
-            try {
-                const randomPage = Math.floor(Math.random() * (400 - 50 + 1)) + 50;
-                const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=${randomPage}`);
-                const res = await response.json();
-                const randMov = res.results.slice(0, 15);
-                console.log(randMov);
-                setRandomMovies(randMov);
-            } catch (error) {
-                console.error('Error fetching random movie:', error);
-            }
-        };
-
-        fetchRandomMovie();
-        fetchTopRatedMovies();
-        fetchPopularMovies();
+        fetchRandomMovie(chaveApi).then(movies => setRandomMovies(movies));
+        fetchTopRatedMovies(chaveApi).then(movies => setTopMovies(movies));
+        fetchPopularMovies(chaveApi).then(movies => setPopularMovies(movies));
     }, []);
 
 
 
     useEffect(() => {
-        fetchMovies();
+        fetchMovies(chaveApi, 1, currentCategory).then(mov => setData(mov));
     }, [currentCategory]);
 
     const setCategory = (cat) => {
@@ -140,7 +84,7 @@ const Dashboard = () => {
         });
 
         setTimeout(() => {
-            fetchMovies(page);
+            fetchMovies(chaveApi,page,currentCategory);
         }, 500);
     };
 
@@ -249,7 +193,7 @@ const Dashboard = () => {
                                         <button
                                             className="page-button"
                                             onClick={() => {
-                                                fetchMovies(400);
+                                                changePage(400);
                                             }}
                                         >
                                             {400}

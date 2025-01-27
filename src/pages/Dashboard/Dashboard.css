@@ -181,7 +181,7 @@ label {
         border: 2px solid rgba(144, 26, 199, 0.5);
 
     }
-    h1:hover{
+    button:hover{
         background-color: rgba(144, 26, 199, 0.329);
     }
 
@@ -213,6 +213,7 @@ button {
 }
 
 .page-button {
+    cursor: none;
     margin-top: 3vh;
     padding: 1vh 2vw;
     border-radius: 200px;
@@ -222,6 +223,7 @@ button {
 }
 
 .page-button.actual{
+    cursor: none;
     background-color: rgba(144, 26, 199, 0.527);
 }
 
