@@ -8,7 +8,7 @@ import { CustomMouse } from '../../components/customMouse/CustomMouse';
 import MovieCard from '../../components/movieCard/MovieCard';
 import SearchIcon from '@mui/icons-material/Search';
 import Carrosel from '../../components/carrossel/Carrosel';
-import { fetchMovies ,fetchRandomMovie, fetchTopRatedMovies, fetchPopularMovies } from '../../api/MovieApi';
+import { fetchMovies, fetchRandomMovie, fetchTopRatedMovies, fetchPopularMovies } from '../../api/MovieApi';
 
 
 const Dashboard = () => {
@@ -19,34 +19,41 @@ const Dashboard = () => {
     const [topMovies, setTopMovies] = React.useState([]);
     const [popularMovies, setPopularMovies] = React.useState([]);
     const [randomMovies, setRandomMovies] = React.useState([]);
+    const [categoryMovies, setCategoryMovies] = React.useState([]);
 
-    const [data, setData] = React.useState([]);
-    const chaveApi = import.meta.env.VITE_CHAVEAPI;
+    const [searchQuery, setSearchQuery] = React.useState('');
 
 
-    
+
+
 
 
     useEffect(() => {
-        fetchRandomMovie(chaveApi).then(movies => setRandomMovies(movies));
-        fetchTopRatedMovies(chaveApi).then(movies => setTopMovies(movies));
-        fetchPopularMovies(chaveApi).then(movies => setPopularMovies(movies));
+        fetchRandomMovie().then(movies => setRandomMovies(movies));
+        fetchTopRatedMovies().then(movies => setTopMovies(movies));
+        fetchPopularMovies().then(movies => setPopularMovies(movies));
     }, []);
 
 
 
     useEffect(() => {
-        fetchMovies(chaveApi, 1, currentCategory).then(mov => setData(mov));
-    }, [currentCategory]);
+        if (currentCategory === 'busca') {
+            const query = document.getElementById('search-input').value;
+            if (query) {
+            setTimeout(() => {
+                fetchMovies(1, 'search', query).then(mov => setCategoryMovies(mov));
+            }, 500);
+            }
+        }
+        else {
+            fetchMovies(1, currentCategory).then(mov => setCategoryMovies(mov));
+        }
+    }, [currentCategory, searchQuery]);
 
     const setCategory = (cat) => {
-        if (cat === currentCategory) {
+        if (cat === currentCategory && cat != 'busca') {
             setCurrentCategory(null);
         }
-        else if (cat === 'busca') {
-            setCurrentCategory('busca')
-        }
-
         else {
             const allMovies = document.querySelectorAll('.filmes-grid');
             const pagination = document.querySelectorAll('.pagination');
@@ -87,7 +94,7 @@ const Dashboard = () => {
         });
 
         setTimeout(() => {
-            fetchMovies(chaveApi, page, currentCategory).then(mov => setData(mov));
+            fetchMovies(page, currentCategory).then(mov => setCategoryMovies(mov));
         }, 500);
     };
 
@@ -125,7 +132,9 @@ const Dashboard = () => {
                                 <button onClick={() => { setCategory("drama") }} style={{ color: currentCategory === 'drama' ? 'rgb(171, 20, 209)' : 'white' }}>Drama</button>
                                 <button onClick={() => { setCategory("comedia") }} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</button>
                                 <button onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</button>
-                                <span onClick={() => { setCategory("busca")}} style={{ color: currentCategory === 'busca' ? 'rgb(171, 20, 209)' : 'white' }}  ><SearchIcon /> <input/></span>
+                                <span onInput={() => { setSearchQuery(document.getElementById('search-input').value)
+                                }} onClick={() => { setCategory("busca"); document.getElementById('search-input').focus() }} style={{ color: currentCategory === 'busca' ? 'rgb(171, 20, 209)' : 'white' }}  ><SearchIcon /> <input value={searchQuery} id='search-input' /></span>
+
                             </div>
                             {!currentCategory && <div className='showcase fade-in' >
                                 <div>
@@ -145,7 +154,7 @@ const Dashboard = () => {
 
                             </div>}
                             {currentCategory && <div className={`filmes-grid fade-in`}>
-                                {data.results && data.results.map((movie) => (
+                                {categoryMovies.results && categoryMovies.results.map((movie) => (
                                     <MovieCard
                                         key={movie.id}
                                         title={movie.title}
@@ -155,9 +164,9 @@ const Dashboard = () => {
                                 ))}
                             </div>}
 
-                            {data.total_pages > 1 && (
+                            {(categoryMovies.total_pages > 1 && currentCategory != 'busca') && (
                                 currentCategory && (<div className="pagination">
-                                    {data.page > 2 && (
+                                    {categoryMovies.page > 2 && (
                                         <button
                                             className="page-button"
                                             onClick={() => {
@@ -167,32 +176,32 @@ const Dashboard = () => {
                                             {1}
                                         </button>
                                     )}
-                                    {data.page > 1 && (
+                                    {categoryMovies.page > 1 && (
                                         <button
                                             className="page-button"
                                             onClick={() => {
-                                                changePage(data.page - 1);
+                                                changePage(categoryMovies.page - 1);
                                             }}
                                         >
-                                            {data.page - 1}
+                                            {categoryMovies.page - 1}
                                         </button>
                                     )}
                                     <button
                                         className="page-button actual"
                                     >
-                                        {data.page}
+                                        {categoryMovies.page}
                                     </button>
-                                    {(data.page < data.total_pages && data.page < 400) && (
+                                    {(categoryMovies.page < categoryMovies.total_pages && categoryMovies.page < 400) && (
                                         <button
                                             className="page-button"
                                             onClick={() => {
-                                                changePage(data.page + 1);
+                                                changePage(categoryMovies.page + 1);
                                             }}
                                         >
-                                            {data.page + 1}
+                                            {categoryMovies.page + 1}
                                         </button>
                                     )}
-                                    {data.page < 399 && (
+                                    {categoryMovies.page < 399 && (
                                         <button
                                             className="page-button"
                                             onClick={() => {

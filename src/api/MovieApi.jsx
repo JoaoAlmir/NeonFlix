@@ -7,16 +7,22 @@ const dictCategories = {
         "infantil": 10751
     }
 
+const chaveApi = import.meta.env.VITE_CHAVEAPI;
 
-const fetchMovies = async (chaveApi, page = 1, currentCategory) => {
+const fetchMovies = async (page = 1, currentCategory, query = '') => {
     try {
-        let cat = dictCategories[currentCategory];
         let url = `https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=${page}`;
-        if (currentCategory) {
+        
+        if (query) {
+            url = `https://api.themoviedb.org/3/search/movie?api_key=${chaveApi}&language=pt-BR&query=${query}&page=${page}`;
+        } else if (currentCategory) {
+            let cat = dictCategories[currentCategory];
             url = `https://api.themoviedb.org/3/discover/movie?api_key=${chaveApi}&language=pt-BR&with_genres=${cat}&page=${page}`;
         }
+        
         const response = await fetch(url);
         const res = await response.json();
+        console.log(res)
         return res;
     } catch (error) {
         console.error('Error fetching movies:', error);
@@ -24,7 +30,7 @@ const fetchMovies = async (chaveApi, page = 1, currentCategory) => {
     }
 };
 
-const fetchPopularMovies = async (chaveApi) => {
+const fetchPopularMovies = async () => {
     try {
         const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=1`);
         const res = await response.json();
@@ -35,7 +41,7 @@ const fetchPopularMovies = async (chaveApi) => {
     }
 };
 
-const fetchTopRatedMovies = async (chaveApi) => {
+const fetchTopRatedMovies = async () => {
     try {
         const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${chaveApi}&language=pt-BR&page=1`);
         const res = await response.json();
@@ -46,7 +52,7 @@ const fetchTopRatedMovies = async (chaveApi) => {
     }
 };
 
-const fetchRandomMovie = async (chaveApi) => {
+const fetchRandomMovie = async () => {
     try {
         const randomPage = Math.floor(Math.random() * (400 - 50 + 1)) + 50;
         const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=${randomPage}`);
@@ -58,4 +64,15 @@ const fetchRandomMovie = async (chaveApi) => {
     }
 };
 
-export { fetchMovies ,fetchPopularMovies, fetchTopRatedMovies, fetchRandomMovie };
+const searchMovies = async (query) => {
+    try {
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${chaveApi}&language=pt-BR&query=${query}&page=1`);
+        const res = await response.json();
+        return res.results;
+    } catch (error) {
+        console.error('Error searching movies:', error);
+        return [];
+    }
+};
+
+export { fetchMovies ,fetchPopularMovies, fetchTopRatedMovies, fetchRandomMovie, searchMovies };

@@ -194,10 +194,11 @@ label {
         border: 2px solid rgba(144, 26, 199, 0.5);
         padding: 2vh 1vw;
         border-radius: 200px;
+        gap: 0.4vw;
 
         input{
             cursor: none;
-            height: 2vh;
+            height: 2.4vh;
             width: 7vw;
         }
         input:focus {
