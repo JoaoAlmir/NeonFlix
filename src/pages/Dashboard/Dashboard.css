@@ -164,13 +164,23 @@ label {
 
 .categorias {
     display: flex;
-    gap: 12vw;
+    gap: 10vw;
+    margin-left: 5vw;
     user-select: none;
+    border-radius: 200px;
+    padding: 1vh 2vw;
 
     h1 {
+        padding: 1vh 2vw;
+        border-radius: 200px;
         font-size: 1.5vw;
         font-weight: 600;
         transition: color 0.7s ease;
+        border: 2px solid rgba(144, 26, 199, 0.5);
+
+    }
+    h1:hover{
+        background-color: rgba(144, 26, 199, 0.329);
     }
 
 
@@ -204,18 +214,16 @@ button {
     margin-top: 3vh;
     padding: 1vh 2vw;
     border-radius: 200px;
+    background-color: rgb(14, 14, 14);
+    border: 2px solid rgba(144, 26, 199, 0.5);
+    color: white;
 }
 
 .page-button:hover {
     cursor: none;
-    background-color: rgb(144, 26, 199);
+    background-color: rgba(144, 26, 199, 0.527);
     color: white;
-
-}
-
-.page-button.active {
-    background-color: rgb(144, 26, 199);
-    color: white;
+    
 }
 
 .pagination {
@@ -228,3 +236,5 @@ button {
     width: fit-content; 
     user-select: none;
 }
+
+

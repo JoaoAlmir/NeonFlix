@@ -27,16 +27,16 @@ const Home = () => {
     const maxGap = 50; // Maximum gap in pixels
     const minGap = 2; // Minimum gap in pixels
     const gapRange = maxGap - minGap;
-    const gap = maxGap - (scrollY * 0.1); // Adjust the multiplier as needed
+    const gap = maxGap - (scrollY * 0.05); // Adjust the multiplier as needed
     const adjustedGap = Math.max(minGap, Math.min(maxGap, gap));
 
     return (
         <>
-            <div className='background'>
+            <div className='neon-border'>
                 <BackgroundGradientAnimationDemo />
             </div>
 
-            <div className='background bg-gray-950 tvDiv'>
+            <div className='neon-border bg-gray-950 tvDiv'>
                 <h2>Para unir toda</h2>
                 <div className='family' style={{ gap: `${adjustedGap}px` }}>
                     <h2>F</h2>
@@ -61,11 +61,11 @@ const Home = () => {
                 <img src={imgPeople} alt="TV People" className="tv-people-image" />
             </div>
 
-            <div className='background'>
+            <div className='neon-border'>
                 <HeroParallaxDemo />
             </div>
 
-            <div className='background'>
+            <div className='neon-border'>
                 <LampDemo />
             </div>
         </>

@@ -85,7 +85,7 @@ h2 {
         0 0 8px #ffffff;
 }
 
-.background {
+.neon-border {
     border: 1px solid #ff00ff1f;
     box-shadow:
         0 0 5px #ff00ff28,

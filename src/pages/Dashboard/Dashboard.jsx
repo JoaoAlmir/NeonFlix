@@ -50,6 +50,7 @@ const Dashboard = () => {
         if (cat === currentCategory) {
             setCurrentCategory(null);
         }
+
         else {
             const allMovies = document.querySelectorAll('.filmes-grid');
             const pagination = document.querySelectorAll('.pagination');
@@ -99,7 +100,7 @@ const Dashboard = () => {
             <CustomMouse />
             <div className='main-container'>
                 <div
-                    className='sidebar background'
+                    className='sidebar neon-border'
                     onMouseEnter={() => setIsSidebarHovered(true)}
                     onMouseLeave={() => setIsSidebarHovered(false)}
                 >
@@ -119,7 +120,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className='page-container background'>
+                <div className='page-container neon-border'>
                     <div className={`page-content ${currentTab === 'filmes' ? 'fade-in' : 'fade-out'}`}>
                         {currentTab === 'filmes' && <div>
                             <div className='categorias'>
