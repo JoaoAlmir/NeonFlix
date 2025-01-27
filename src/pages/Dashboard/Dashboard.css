@@ -277,3 +277,58 @@ button {
     }
 }
 
+.modal-content{
+    cursor: none;
+    padding: 5vh 3vw;
+    width: 80vw;
+    background-color: rgb(14, 14, 14);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 100px;
+}
+
+.modal-left{
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    padding: 0 5vw;
+}
+
+.modal-right{
+    img{
+        max-width: 80vw;
+        max-height: 60vh;
+        width: auto;
+        height: auto;
+        border-radius: 50px;        
+    }
+
+    img:hover{
+        filter: brightness(0.5);
+
+    }
+
+    p{
+        font-size: 2vh;
+        font-weight: 600;
+    }
+}
+
+body:not(.modal-open) {
+    cursor: none;
+}
+
+.modal-open {
+    cursor: default;
+}
+
+.modal-info{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2vw;
+}

@@ -1,5 +1,5 @@
 #cursor{
-    z-index: 100;
+    z-index: 9000;
     width: 2vh;
     height: 2.5 vh;
     pointer-events: none;

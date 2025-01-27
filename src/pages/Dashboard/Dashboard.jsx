@@ -10,6 +10,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Carrosel from '../../components/carrossel/Carrosel';
 import { fetchMovies, fetchRandomMovie, fetchTopRatedMovies, fetchPopularMovies } from '../../api/MovieApi';
 import { useNavigate } from 'react-router-dom';
+import { Modal } from '@mui/material';
 
 
 const Dashboard = () => {
@@ -26,9 +27,8 @@ const Dashboard = () => {
 
     const [searchQuery, setSearchQuery] = React.useState('');
 
-
-
-
+    const [infoMovie, setInfoMovie] = React.useState(null);
+    const [modalIsOpen, setModalIsOpen] = React.useState(false);
 
 
     useEffect(() => {
@@ -43,9 +43,9 @@ const Dashboard = () => {
         if (currentCategory === 'busca') {
             const query = document.getElementById('search-input').value;
             if (query) {
-            setTimeout(() => {
-                fetchMovies(1, 'search', query).then(mov => setCategoryMovies(mov));
-            }, 500);
+                setTimeout(() => {
+                    fetchMovies(1, 'search', query).then(mov => setCategoryMovies(mov));
+                }, 500);
             }
         }
         else {
@@ -104,13 +104,13 @@ const Dashboard = () => {
     return (
         <>
             <CustomMouse />
-            <div className='main-container'>
+            <div className={`main-container`} >
                 <div
                     className='sidebar neon-border'
                     onMouseEnter={() => setIsSidebarHovered(true)}
                     onMouseLeave={() => setIsSidebarHovered(false)}
                 >
-                    <label className='neonTextLower' onClick={()=>{nav('/')}} >{isSidebarHovered ? 'NeonFlix' : 'NF'} </label>
+                    <label className='neonTextLower' onClick={() => { nav('/') }} >{isSidebarHovered ? 'NeonFlix' : 'NF'} </label>
                     <div className='sidebar-menu'>
                         <div className='icon-sidebar' onClick={() => setCurrentTab('filmes')}>
                             <ViewAgendaIcon style={{ color: currentTab === 'filmes' ? 'rgb(171, 20, 209)' : 'white' }} />
@@ -135,8 +135,9 @@ const Dashboard = () => {
                                 <button onClick={() => { setCategory("drama") }} style={{ color: currentCategory === 'drama' ? 'rgb(171, 20, 209)' : 'white' }}>Drama</button>
                                 <button onClick={() => { setCategory("comedia") }} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</button>
                                 <button onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</button>
-                                <span onInput={() => { setSearchQuery(document.getElementById('search-input').value)
-                                }} onClick={() => { setCategory("busca"); document.getElementById('search-input').focus() }} style={{ color: currentCategory === 'busca' ? 'rgb(171, 20, 209)' : 'white' }}  ><SearchIcon  style={{fontSize:"3vh"}}/> <input value={searchQuery} id='search-input' /></span>
+                                <span onInput={() => {
+                                    setSearchQuery(document.getElementById('search-input').value)
+                                }} onClick={() => { setCategory("busca"); document.getElementById('search-input').focus() }} style={{ color: currentCategory === 'busca' ? 'rgb(171, 20, 209)' : 'white' }}  ><SearchIcon style={{ fontSize: "3vh" }} /> <input value={searchQuery} id='search-input' onChange={(e) => setSearchQuery(e.target.value)} /></span>
 
                             </div>
                             {!currentCategory && <div className='showcase fade-in' >
@@ -159,6 +160,11 @@ const Dashboard = () => {
                             {currentCategory && <div className={`filmes-grid fade-in`}>
                                 {categoryMovies.results && categoryMovies.results.map((movie) => (
                                     <MovieCard
+                                        onClick={() => {
+                                            setInfoMovie(movie);
+                                            setModalIsOpen(true);
+                                            console.log('teste');
+                                        }}
                                         key={movie.id}
                                         title={movie.title}
                                         description={movie.overview ? movie.overview.substring(0, 120) + '...' : null}
@@ -217,6 +223,30 @@ const Dashboard = () => {
                                 </div>)
                             )}
                         </div>}
+
+                        {infoMovie && (
+                            <Modal
+                                open={modalIsOpen}
+                                onClose={() => setModalIsOpen(false)}
+                                aria-labelledby="modal-title"
+                                aria-describedby="modal-description"
+                            >
+                                <div className="modal-content neon-border">
+                                    <div className="modal-left">
+                                        <h2 id="modal-title">{infoMovie.title}</h2>
+                                        <p id="modal-description">{infoMovie.overview}</p>
+                                    </div>
+                                    <div className="modal-right">
+                                        <img src={`https://image.tmdb.org/t/p/w500${infoMovie.backdrop_path}`} alt={infoMovie.title} />
+                                        <div className="modal-info">
+                                            <p>Nota: {infoMovie.vote_average}</p>
+                                            <p>Qtd votos: {infoMovie.vote_count}</p>
+                                            <p>{new Date(infoMovie.release_date).toLocaleDateString('pt-BR')}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Modal>
+                        )}
                     </div>
                     <div className={`page-content ${currentTab === 'perfil' ? 'fade-in' : 'fade-out'}`}>
                         {currentTab === 'perfil' && <div>
@@ -230,6 +260,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
+
         </>
     );
 };
