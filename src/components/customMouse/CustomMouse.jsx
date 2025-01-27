@@ -7,6 +7,9 @@ export function CustomMouse() {
     const cursorRef = React.useRef(null)
 
     function renderMouse(event) {
+        if (!cursorRef.current) {
+            return
+        }
         const { clientX, clientY } = event;
         const mouseX = clientX - 8
         const mouseY = clientY - 2
@@ -14,6 +17,9 @@ export function CustomMouse() {
     }
 
     function HideMouse(event) {
+        if (!cursorRef.current) {
+            return
+        }
         const { clientX, clientY } = event;
         const mouseX = clientX - 999
         const mouseY = clientY - 999

@@ -6,11 +6,21 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import '../Home/Home.css';
 import { CustomMouse } from '../../components/customMouse/CustomMouse';
 const Dashboard = () => {
-    const [currentPage, setCurrentPage] = React.useState('movies');
+    const [currentPage, setCurrentPage] = React.useState('filmes');
+    const [currentCategory, setCurrentCategory] = React.useState(null);
     const [isSidebarHovered, setIsSidebarHovered] = React.useState(false);
 
+    const setCategory = (cat)=>{
+        if(cat === currentCategory){
+            setCurrentCategory(null);
+            return;
+        }
+        setCurrentCategory(cat);
+    }
+
     return (
-        <><CustomMouse />
+        <>
+            <CustomMouse />
             <div className='main-container'>
                 <div
                     className='sidebar background'
@@ -33,8 +43,28 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className='page-container'>
-                    aa
+                <div className='page-container background'>
+                    <div className={`page-content ${currentPage === 'filmes' ? 'fade-in' : 'fade-out'}`}>
+                        {currentPage === 'filmes' && <div>
+                            <div className='categorias'>
+                                <h1 onClick={()=>{setCategory("acao")}} style={{ color: currentCategory === 'acao' ? 'rgb(171, 20, 209)' : 'white' }}>Ação</h1>
+                                <h1 onClick={()=>{setCategory("aventura")}} style={{ color: currentCategory === 'aventura' ? 'rgb(171, 20, 209)' : 'white' }}>Aventura</h1>
+                                <h1 onClick={()=>{setCategory("drama")}} style={{ color: currentCategory === 'drama' ? 'rgb(171, 20, 209)' : 'white' }}>Drama</h1>
+                                <h1 onClick={()=>{setCategory("comedia")}} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</h1>
+                                <h1 onClick={()=>{setCategory("infantil")}} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</h1>
+                            </div>
+                        </div>}
+                    </div>
+                    <div className={`page-content ${currentPage === 'perfil' ? 'fade-in' : 'fade-out'}`}>
+                        {currentPage === 'perfil' && <div>
+                            <h2>Perfil</h2>
+                        </div>}
+                    </div>
+                    <div className={`page-content ${currentPage === 'config' ? 'fade-in' : 'fade-out'}`}>
+                        {currentPage === 'config' && <div>
+                            <h2>Config</h2>
+                        </div>}
+                    </div>
                 </div>
             </div>
         </>
