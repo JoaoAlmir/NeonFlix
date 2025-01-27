@@ -50,7 +50,7 @@ export function LampDemo() {
   };
   return (
     <LampContainer>
-      <h1
+      <motion.h1
         initial={{ opacity: 0.5, y: 200 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
@@ -60,7 +60,7 @@ export function LampDemo() {
         }}
         className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
         Centenas de experiências te aguardam
-      </h1>
+      </motion.h1>
 
       <button
         initial={{ opacity: 0.5 }}

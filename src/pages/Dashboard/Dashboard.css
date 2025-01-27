@@ -96,7 +96,7 @@ label {
 
 .fade-in {
 
-    animation: fadeIn 2s forwards;
+    animation: fadeIn 3s forwards;
 
 }
 
@@ -104,7 +104,7 @@ label {
 
 .fade-out {
 
-    animation: fadeOut 2s forwards;
+    animation: fadeOut 0.1s forwards;
 
 }
 
@@ -146,12 +146,15 @@ label {
 
 .categorias{
     display: flex;
-    gap: 13vw;
+    gap: 12vw;
     user-select: none;
 
     h1{
         font-size: 1.5vw;
+        transition: color 0.7s ease;
     }
+
+
 }
 
 .filmes-grid{

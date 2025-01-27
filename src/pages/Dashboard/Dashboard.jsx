@@ -15,11 +15,28 @@ const Dashboard = () => {
     const [data, setData] = React.useState([]);
     const chaveApi = import.meta.env.VITE_CHAVEAPI;
 
+
+    const dictCategories = {
+        "acao": 28,
+        "aventura": 12,
+        "drama": 18,
+        "comedia": 35,
+        "infantil": 10751
+    }
+
+
+
+
+
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                console.log(chaveApi);
-                const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=1`);
+                let cat = dictCategories[currentCategory];
+                let url = `https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=1`;
+                if (currentCategory) {
+                    url = `https://api.themoviedb.org/3/discover/movie?api_key=${chaveApi}&language=pt-BR&with_genres=${cat}`;
+                }
+                const response = await fetch(url);
                 const res = await response.json();
                 setData(res);
                 console.log(res);
@@ -29,14 +46,23 @@ const Dashboard = () => {
         };
 
         fetchMovies();
-    }, []);
+    }, [currentCategory]);
 
     const setCategory = (cat) => {
         if (cat === currentCategory) {
             setCurrentCategory(null);
-            return;
         }
-        setCurrentCategory(cat);
+        else {
+            const allMovies = document.querySelectorAll('.filmes-grid');
+            allMovies.forEach(movie => {
+                movie.classList.add('fade-out');
+                setTimeout(() => {
+                    movie.classList.remove('fade-out');
+                    movie.classList.add('fade-in');
+                }, 10);
+            });
+            setCurrentCategory(cat);
+        }
     }
 
     return (
@@ -75,16 +101,16 @@ const Dashboard = () => {
                                 <h1 onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</h1>
                             </div>
 
-                            <div className='filmes-grid'>
+                            {currentCategory && <div className={`filmes-grid fade-in`}>
                                 {data.results && data.results.map((movie) => (
                                     <MovieCard
                                         key={movie.id}
                                         title={movie.title}
-                                        description={movie.overview.substring(0, 100)+'...'}
+                                        description={movie.overview.substring(0, 100) + '...'}
                                         image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                     />
                                 ))}
-                            </div>
+                            </div>}
                         </div>}
                     </div>
                     <div className={`page-content ${currentPage === 'perfil' ? 'fade-in' : 'fade-out'}`}>
