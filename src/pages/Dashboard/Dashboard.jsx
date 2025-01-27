@@ -9,7 +9,7 @@ import MovieCard from '../../components/movieCard/MovieCard';
 
 
 const Dashboard = () => {
-    const [currentPage, setCurrentPage] = React.useState('filmes');
+    const [currentTab, setCurrentTab] = React.useState('filmes');
     const [currentCategory, setCurrentCategory] = React.useState(null);
     const [isSidebarHovered, setIsSidebarHovered] = React.useState(false);
     const [data, setData] = React.useState([]);
@@ -24,27 +24,25 @@ const Dashboard = () => {
         "infantil": 10751
     }
 
-
+    const fetchMovies = async (page=1) => {
+        try {
+            let cat = dictCategories[currentCategory];
+            let url = `https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=1`;
+            if (currentCategory) {
+                url = `https://api.themoviedb.org/3/discover/movie?api_key=${chaveApi}&language=pt-BR&with_genres=${cat}&page=${page}`;
+            }
+            const response = await fetch(url);
+            const res = await response.json();
+            setData(res);
+            console.log(res);
+        } catch (error) {
+            console.error('Error fetching movies:', error);
+        }
+    };
 
 
 
     useEffect(() => {
-        const fetchMovies = async () => {
-            try {
-                let cat = dictCategories[currentCategory];
-                let url = `https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=1`;
-                if (currentCategory) {
-                    url = `https://api.themoviedb.org/3/discover/movie?api_key=${chaveApi}&language=pt-BR&with_genres=${cat}`;
-                }
-                const response = await fetch(url);
-                const res = await response.json();
-                setData(res);
-                console.log(res);
-            } catch (error) {
-                console.error('Error fetching movies:', error);
-            }
-        };
-
         fetchMovies();
     }, [currentCategory]);
 
@@ -54,16 +52,47 @@ const Dashboard = () => {
         }
         else {
             const allMovies = document.querySelectorAll('.filmes-grid');
+            const pagination = document.querySelectorAll('.pagination');
+
             allMovies.forEach(movie => {
                 movie.classList.add('fade-out');
                 setTimeout(() => {
                     movie.classList.remove('fade-out');
-                    movie.classList.add('fade-in');
-                }, 10);
+
+                }, 500);
             });
-            setCurrentCategory(cat);
+            pagination.forEach(pag => {
+                pag.style.display = 'none';
+                setTimeout(() => {
+                    pag.style.display = 'flex';
+                }, 1000);
+            });
+            setTimeout(() => {
+                setCurrentCategory(cat);
+            }, 500);
         }
     }
+
+    const changePage = (page) => {
+        const allMovies = document.querySelectorAll('.filmes-grid');
+        const pagination = document.querySelectorAll('.pagination');
+        allMovies.forEach(movie => {
+            movie.classList.add('fade-out');
+            setTimeout(() => {
+                movie.classList.remove('fade-out');
+            }, 500);
+        });
+        pagination.forEach(pag => {
+            pag.style.display = 'none';
+            setTimeout(() => {
+                pag.style.display = 'flex';
+            }, 1000);
+        });
+        
+        setTimeout(() => {
+            fetchMovies(page);
+        }, 500);
+    };
 
     return (
         <>
@@ -76,23 +105,23 @@ const Dashboard = () => {
                 >
                     <label className='neonTextLower'>{isSidebarHovered ? 'NeonFlix' : 'NF'}</label>
                     <div className='sidebar-menu'>
-                        <div className='icon-sidebar' onClick={() => setCurrentPage('filmes')}>
-                            <ViewAgendaIcon style={{ color: currentPage === 'filmes' ? 'rgb(171, 20, 209)' : 'white' }} />
-                            {isSidebarHovered && <label style={{ color: currentPage === 'filmes' ? 'rgb(171, 20, 209)' : 'white' }} >Filmes</label>}
+                        <div className='icon-sidebar' onClick={() => setCurrentTab('filmes')}>
+                            <ViewAgendaIcon style={{ color: currentTab === 'filmes' ? 'rgb(171, 20, 209)' : 'white' }} />
+                            {isSidebarHovered && <label style={{ color: currentTab === 'filmes' ? 'rgb(171, 20, 209)' : 'white' }} >Filmes</label>}
                         </div>
-                        <div className='icon-sidebar' onClick={() => setCurrentPage('perfil')}>
-                            <PersonIcon style={{ color: currentPage === 'perfil' ? 'rgb(171, 20, 209)' : 'white' }} />
-                            {isSidebarHovered && <label style={{ color: currentPage === 'perfil' ? 'rgb(171, 20, 209)' : 'white' }} >Perfil</label>}
+                        <div className='icon-sidebar' onClick={() => setCurrentTab('perfil')}>
+                            <PersonIcon style={{ color: currentTab === 'perfil' ? 'rgb(171, 20, 209)' : 'white' }} />
+                            {isSidebarHovered && <label style={{ color: currentTab === 'perfil' ? 'rgb(171, 20, 209)' : 'white' }} >Perfil</label>}
                         </div>
-                        <div className='icon-sidebar' onClick={() => setCurrentPage('config')}>
-                            <SettingsIcon style={{ color: currentPage === 'config' ? 'rgb(171, 20, 209)' : 'white' }} />
-                            {isSidebarHovered && <label style={{ color: currentPage === 'config' ? 'rgb(171, 20, 209)' : 'white' }}>Config</label>}
+                        <div className='icon-sidebar' onClick={() => setCurrentTab('config')}>
+                            <SettingsIcon style={{ color: currentTab === 'config' ? 'rgb(171, 20, 209)' : 'white' }} />
+                            {isSidebarHovered && <label style={{ color: currentTab === 'config' ? 'rgb(171, 20, 209)' : 'white' }}>Config</label>}
                         </div>
                     </div>
                 </div>
                 <div className='page-container background'>
-                    <div className={`page-content ${currentPage === 'filmes' ? 'fade-in' : 'fade-out'}`}>
-                        {currentPage === 'filmes' && <div>
+                    <div className={`page-content ${currentTab === 'filmes' ? 'fade-in' : 'fade-out'}`}>
+                        {currentTab === 'filmes' && <div>
                             <div className='categorias'>
                                 <h1 onClick={() => { setCategory("acao") }} style={{ color: currentCategory === 'acao' ? 'rgb(171, 20, 209)' : 'white' }}>Ação</h1>
                                 <h1 onClick={() => { setCategory("aventura") }} style={{ color: currentCategory === 'aventura' ? 'rgb(171, 20, 209)' : 'white' }}>Aventura</h1>
@@ -106,20 +135,70 @@ const Dashboard = () => {
                                     <MovieCard
                                         key={movie.id}
                                         title={movie.title}
-                                        description={movie.overview.substring(0, 100) + '...'}
+                                        description={movie.overview ? movie.overview.substring(0, 120) + '...' : null}
                                         image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                     />
                                 ))}
                             </div>}
+
+                            {data.total_pages > 1 && (
+                                currentCategory && (<div className="pagination">
+                                    {data.page > 2 && (
+                                        <button
+                                            className="page-button"
+                                            onClick={() => {
+                                                changePage( 1);
+                                            }}
+                                        >
+                                            {1}
+                                        </button>
+                                    )}
+                                    {data.page > 1 && (
+                                        <button
+                                            className="page-button"
+                                            onClick={() => {
+                                                changePage(data.page - 1);
+                                            }}
+                                        >
+                                            {data.page - 1}
+                                        </button>
+                                    )}
+                                    <button
+                                        className="page-button active"
+                                    >
+                                        {data.page}
+                                    </button>
+                                    {(data.page < data.total_pages && data.page < 400) && (
+                                        <button
+                                            className="page-button"
+                                            onClick={() => {
+                                                changePage(data.page + 1);
+                                            }}
+                                        >
+                                            {data.page + 1}
+                                        </button>
+                                    )}
+                                    {data.page < 399 && (
+                                        <button
+                                            className="page-button"
+                                            onClick={() => {
+                                                fetchMovies(400);
+                                            }}
+                                        >
+                                            {400}
+                                        </button>
+                                    )}
+                                </div>)
+                            )}
                         </div>}
                     </div>
-                    <div className={`page-content ${currentPage === 'perfil' ? 'fade-in' : 'fade-out'}`}>
-                        {currentPage === 'perfil' && <div>
+                    <div className={`page-content ${currentTab === 'perfil' ? 'fade-in' : 'fade-out'}`}>
+                        {currentTab === 'perfil' && <div>
                             <h2>Perfil</h2>
                         </div>}
                     </div>
-                    <div className={`page-content ${currentPage === 'config' ? 'fade-in' : 'fade-out'}`}>
-                        {currentPage === 'config' && <div>
+                    <div className={`page-content ${currentTab === 'config' ? 'fade-in' : 'fade-out'}`}>
+                        {currentTab === 'config' && <div>
                             <h2>Config</h2>
                         </div>}
                     </div>
