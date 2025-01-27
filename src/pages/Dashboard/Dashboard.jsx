@@ -12,6 +12,7 @@ const Dashboard = () => {
     const [currentPage, setCurrentPage] = React.useState('filmes');
     const [currentCategory, setCurrentCategory] = React.useState(null);
     const [isSidebarHovered, setIsSidebarHovered] = React.useState(false);
+    const [data, setData] = React.useState([]);
     const chaveApi = import.meta.env.VITE_CHAVEAPI;
 
     useEffect(() => {
@@ -19,8 +20,9 @@ const Dashboard = () => {
             try {
                 console.log(chaveApi);
                 const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=1`);
-                const data = await response.json();
-                console.log(data);
+                const res = await response.json();
+                setData(res);
+                console.log(res);
             } catch (error) {
                 console.error('Error fetching movies:', error);
             }
@@ -29,8 +31,8 @@ const Dashboard = () => {
         fetchMovies();
     }, []);
 
-    const setCategory = (cat)=>{
-        if(cat === currentCategory){
+    const setCategory = (cat) => {
+        if (cat === currentCategory) {
             setCurrentCategory(null);
             return;
         }
@@ -66,33 +68,23 @@ const Dashboard = () => {
                     <div className={`page-content ${currentPage === 'filmes' ? 'fade-in' : 'fade-out'}`}>
                         {currentPage === 'filmes' && <div>
                             <div className='categorias'>
-                                <h1 onClick={()=>{setCategory("acao")}} style={{ color: currentCategory === 'acao' ? 'rgb(171, 20, 209)' : 'white' }}>Ação</h1>
-                                <h1 onClick={()=>{setCategory("aventura")}} style={{ color: currentCategory === 'aventura' ? 'rgb(171, 20, 209)' : 'white' }}>Aventura</h1>
-                                <h1 onClick={()=>{setCategory("drama")}} style={{ color: currentCategory === 'drama' ? 'rgb(171, 20, 209)' : 'white' }}>Drama</h1>
-                                <h1 onClick={()=>{setCategory("comedia")}} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</h1>
-                                <h1 onClick={()=>{setCategory("infantil")}} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</h1>
+                                <h1 onClick={() => { setCategory("acao") }} style={{ color: currentCategory === 'acao' ? 'rgb(171, 20, 209)' : 'white' }}>Ação</h1>
+                                <h1 onClick={() => { setCategory("aventura") }} style={{ color: currentCategory === 'aventura' ? 'rgb(171, 20, 209)' : 'white' }}>Aventura</h1>
+                                <h1 onClick={() => { setCategory("drama") }} style={{ color: currentCategory === 'drama' ? 'rgb(171, 20, 209)' : 'white' }}>Drama</h1>
+                                <h1 onClick={() => { setCategory("comedia") }} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</h1>
+                                <h1 onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</h1>
                             </div>
 
                             <div className='filmes-grid'>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-                                <MovieCard title={"teste"} description={"descrpariwaporawro pawoeiajepo jawpeo awdaw dawd adjawpidajd pawo awd awdjwaio djawd oaiwd jawokd ioaoiw dwiai aw iajwad awi jwdlidjapod wajdpoawdkawldkawd akodawçkwdçwakd çawpok dawopdkawçk dçawpok" }  image={"https://m.media-amazon.com/images/M/MV5BMWQzMWNkOGQtN2EwYi00YmVjLWFlMDktY2E1ZTI2YWM4ZDcxXkEyXkFqcGc@._V1_.jpg"}/>
-
-                            </div>  
+                                {data.results && data.results.map((movie) => (
+                                    <MovieCard
+                                        key={movie.id}
+                                        title={movie.title}
+                                        description={movie.overview.substring(0, 100)+'...'}
+                                        image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                    />
+                                ))}
+                            </div>
                         </div>}
                     </div>
                     <div className={`page-content ${currentPage === 'perfil' ? 'fade-in' : 'fade-out'}`}>
