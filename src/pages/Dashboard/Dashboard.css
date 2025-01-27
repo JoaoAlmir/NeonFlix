@@ -77,11 +77,19 @@ label {
     display: flex;
     flex-direction: column;
     gap: 2vh;
-    padding: 5vh 0 0 5vw;
+    padding: 5vh 5vw;
     width: 100%;
     background-color: rgb(14, 14, 14);
     border-radius: 80px;
-    margin: 1vh 1vw 1vh 1vw;
+    margin: 1vh 3vw 1vh 1vw;
+    overflow-y: scroll;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+}
+
+.page-container::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+    overflow-x: hidden;
     
 }
 
@@ -144,4 +152,10 @@ label {
     h1{
         font-size: 1.5vw;
     }
+}
+
+.filmes-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 }

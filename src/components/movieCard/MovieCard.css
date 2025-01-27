@@ -1,0 +1,41 @@
+.movie-card {
+    position: relative;
+    width: 200px;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-card.hovered {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.movie-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.movie-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    transition: opacity 0.3s;
+}
+
+.movie-info h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.movie-info p {
+    margin: 10px 0 0;
+    font-size: 0.9em;
+}
