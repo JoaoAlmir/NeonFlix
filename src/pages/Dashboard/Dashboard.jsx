@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Dashboard.css';
 import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
 import PersonIcon from '@mui/icons-material/Person';
@@ -6,10 +6,28 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import '../Home/Home.css';
 import { CustomMouse } from '../../components/customMouse/CustomMouse';
 import MovieCard from '../../components/movieCard/MovieCard';
+
+
 const Dashboard = () => {
     const [currentPage, setCurrentPage] = React.useState('filmes');
     const [currentCategory, setCurrentCategory] = React.useState(null);
     const [isSidebarHovered, setIsSidebarHovered] = React.useState(false);
+    const chaveApi = import.meta.env.VITE_CHAVEAPI;
+
+    useEffect(() => {
+        const fetchMovies = async () => {
+            try {
+                console.log(chaveApi);
+                const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=1`);
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error('Error fetching movies:', error);
+            }
+        };
+
+        fetchMovies();
+    }, []);
 
     const setCategory = (cat)=>{
         if(cat === currentCategory){
