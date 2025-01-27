@@ -14,7 +14,11 @@ const Dashboard = () => {
     const [currentTab, setCurrentTab] = React.useState('filmes');
     const [currentCategory, setCurrentCategory] = React.useState(null);
     const [isSidebarHovered, setIsSidebarHovered] = React.useState(false);
+
     const [topMovies, setTopMovies] = React.useState([]);
+    const [popularMovies, setPopularMovies] = React.useState([]);
+    const [randomMovies, setRandomMovies] = React.useState([]);
+
     const [data, setData] = React.useState([]);
     const chaveApi = import.meta.env.VITE_CHAVEAPI;
 
@@ -48,13 +52,40 @@ const Dashboard = () => {
             try {
                 const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=1`);
                 const res = await response.json();
-                const top10Movies = res.results.slice(0, 10);
-                setTopMovies(top10Movies);
+                const topMov = res.results.slice(0, 15);
+                setTopMovies(topMov);
             } catch (error) {
                 console.error('Error fetching popular movies:', error);
             }
         };
 
+        const fetchTopRatedMovies = async () => {
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${chaveApi}&language=pt-BR&page=1
+`);
+                const res = await response.json();
+                const popMov = res.results.slice(0, 15);
+                setPopularMovies(popMov);
+            } catch (error) {
+                console.error('Error fetching top rated movies:', error);
+            }
+        };
+
+        const fetchRandomMovie = async () => {
+            try {
+                const randomPage = Math.floor(Math.random() * (400 - 50 + 1)) + 50;
+                const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=${randomPage}`);
+                const res = await response.json();
+                const randMov = res.results.slice(0, 15);
+                console.log(randMov);
+                setRandomMovies(randMov);
+            } catch (error) {
+                console.error('Error fetching random movie:', error);
+            }
+        };
+
+        fetchRandomMovie();
+        fetchTopRatedMovies();
         fetchPopularMovies();
     }, []);
 
@@ -147,20 +178,22 @@ const Dashboard = () => {
                                 <button onClick={() => { setCategory("drama") }} style={{ color: currentCategory === 'drama' ? 'rgb(171, 20, 209)' : 'white' }}>Drama</button>
                                 <button onClick={() => { setCategory("comedia") }} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</button>
                                 <button onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</button>
-                                <button style={{padding:'0 1vw'}} ><SearchIcon/></button>
+                                <button style={{ padding: '0 1vw' }} ><SearchIcon /></button>
                             </div>
                             {!currentCategory && <div className='showcase fade-in' >
                                 <div>
                                     <h1>Populares</h1>
                                     <Carrosel movies={topMovies} />
-                                    
+
                                 </div>
                                 <div>
                                     <h1>Melhores notas</h1>
+                                    <Carrosel movies={popularMovies} />
                                 </div>
 
                                 <div>
-                                    <h1>Deixe sorte decidir</h1>
+                                    <h1>Deixe a sorte decidir</h1>
+                                    <Carrosel movies={randomMovies} />
                                 </div>
 
                             </div>}

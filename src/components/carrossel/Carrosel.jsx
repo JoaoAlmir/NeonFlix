@@ -11,7 +11,7 @@ const Carrosel = ({ movies }) => {
         if (!carrosel) return;
 
         const scrollAmount = 265; // Distância a ser rolada a cada intervalo
-        const scrollInterval = 3000; // Intervalo de 3 segundos
+        const scrollInterval = 2000; // Intervalo de 3 segundos
 
         const moveCarrosel = () => {
             const maxScrollLeft = carrosel.scrollWidth - carrosel.clientWidth;
