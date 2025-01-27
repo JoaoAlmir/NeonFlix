@@ -343,3 +343,45 @@ button {
     padding: 0 2vw;
 }
 
+.perfil-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8vh;
+    h2{
+        padding: 0 2vw;
+        display: flex;
+        align-items: center;
+    }
+
+    h3 {
+        font-size: 2vw;
+        padding-left: 2vw;
+        color: white;
+        font-weight: 500;
+        margin-bottom: 1vh;
+        transition: color 0.3s ease;
+    }
+
+    h3:hover {
+        color: rgba(171, 20, 209, 1);
+    }
+
+    .user-info{
+        display: flex;
+        gap: 2vw;
+        padding: 2vh 2vw;
+        border-radius: 200px;
+        background-color: rgba(144, 26, 199, 0.329);
+        border: 2px solid rgba(144, 26, 199, 0.5);
+        cursor: none;
+    }
+
+    .central-circle {
+        padding: 5px;
+        width: 2.5vw;
+        height: 2.5vw;
+        background-color: rgba(144, 26, 199, 0.5);
+        border-radius: 50%;
+       
+    }
+}

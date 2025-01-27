@@ -10,7 +10,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import Carrosel from '../../components/carrossel/Carrosel';
 import { fetchMovies, fetchRandomMovie, fetchTopRatedMovies, fetchPopularMovies } from '../../api/MovieApi';
 import { useNavigate } from 'react-router-dom';
-import { Modal } from '@mui/material';
+import { Avatar, Modal } from '@mui/material';
+import perfilIcon from '../../assets/profileIcon.jpg';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
 
 const Dashboard = () => {
@@ -250,12 +252,31 @@ const Dashboard = () => {
                     </div>
                     <div className={`page-content ${currentTab === 'perfil' ? 'fade-in' : 'fade-out'}`}>
                         {currentTab === 'perfil' && <div>
-                            <h2>Perfil</h2>
+                            <div className='perfil-container'>
+                                <div className='user-info'>
+                                <Avatar sx={{ width: 150, height: 150 }} src={perfilIcon} />
+                                <h2>Nome do usuário</h2>
+                                
+
+                                </div>
+
+                                <h3>Email : email@email.com <ModeEditIcon className='central-circle'/></h3>
+                                <h3>Nome : Nome do Usuario  <ModeEditIcon className='central-circle'/> </h3>        
+                                <h3>Senha : **************  <ModeEditIcon className='central-circle'/></h3>
+                                               
+                                
+
+
+                            </div>
+
+
                         </div>}
                     </div>
                     <div className={`page-content ${currentTab === 'config' ? 'fade-in' : 'fade-out'}`}>
                         {currentTab === 'config' && <div>
-                            <h2>Config</h2>
+                            <h2>Mudança do tema</h2>
+
+                            
                         </div>}
                     </div>
                 </div>
