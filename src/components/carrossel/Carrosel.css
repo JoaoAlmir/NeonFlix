@@ -1,0 +1,23 @@
+.carrosel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Impede que o conteúdo transborde */
+}
+
+.carrosel-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth; /* Isso aplica a rolagem suave */
+    transition: transform 1s ease; /* Transição suave para o movimento */
+}
+
+.carrosel-container::-webkit-scrollbar {
+    display: none; /* Remove a barra de rolagem */
+}
+
+.movie-card {
+    flex: 0 0 auto;
+}
+
+
