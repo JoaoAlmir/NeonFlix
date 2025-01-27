@@ -164,13 +164,14 @@ label {
 
 .categorias {
     display: flex;
-    gap: 10vw;
-    margin-left: 5vw;
+    gap: 4.5vw;
+    margin-left: 1.8vw;
     user-select: none;
     border-radius: 200px;
     padding: 1vh 2vw;
 
-    h1 {
+    button {
+        cursor: none;
         padding: 1vh 2vw;
         border-radius: 200px;
         font-size: 1.5vw;
@@ -219,11 +220,13 @@ button {
     color: white;
 }
 
+.page-button.actual{
+    background-color: rgba(144, 26, 199, 0.527);
+}
+
 .page-button:hover {
     cursor: none;
-    background-color: rgba(144, 26, 199, 0.527);
-    color: white;
-    
+    background-color: rgba(144, 26, 199, 0.527);    
 }
 
 .pagination {
@@ -237,4 +240,15 @@ button {
     user-select: none;
 }
 
+.showcase{
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15vh;
+    h1{
+        font-size: 1.5vw;
+        font-weight: 600;
+    }
+}
 

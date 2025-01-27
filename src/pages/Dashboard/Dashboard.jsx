@@ -6,6 +6,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import '../Home/Home.css';
 import { CustomMouse } from '../../components/customMouse/CustomMouse';
 import MovieCard from '../../components/movieCard/MovieCard';
+import SearchIcon from '@mui/icons-material/Search';
 
 
 const Dashboard = () => {
@@ -24,7 +25,7 @@ const Dashboard = () => {
         "infantil": 10751
     }
 
-    const fetchMovies = async (page=1) => {
+    const fetchMovies = async (page = 1) => {
         try {
             let cat = dictCategories[currentCategory];
             let url = `https://api.themoviedb.org/3/movie/popular?api_key=${chaveApi}&language=pt-BR&page=1`;
@@ -89,7 +90,7 @@ const Dashboard = () => {
                 pag.style.display = 'flex';
             }, 1000);
         });
-        
+
         setTimeout(() => {
             fetchMovies(page);
         }, 500);
@@ -124,13 +125,26 @@ const Dashboard = () => {
                     <div className={`page-content ${currentTab === 'filmes' ? 'fade-in' : 'fade-out'}`}>
                         {currentTab === 'filmes' && <div>
                             <div className='categorias'>
-                                <h1 onClick={() => { setCategory("acao") }} style={{ color: currentCategory === 'acao' ? 'rgb(171, 20, 209)' : 'white' }}>Ação</h1>
-                                <h1 onClick={() => { setCategory("aventura") }} style={{ color: currentCategory === 'aventura' ? 'rgb(171, 20, 209)' : 'white' }}>Aventura</h1>
-                                <h1 onClick={() => { setCategory("drama") }} style={{ color: currentCategory === 'drama' ? 'rgb(171, 20, 209)' : 'white' }}>Drama</h1>
-                                <h1 onClick={() => { setCategory("comedia") }} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</h1>
-                                <h1 onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</h1>
+                                <button onClick={() => { setCategory("acao") }} style={{ color: currentCategory === 'acao' ? 'rgb(171, 20, 209)' : 'white' }}>Ação</button>
+                                <button onClick={() => { setCategory("aventura") }} style={{ color: currentCategory === 'aventura' ? 'rgb(171, 20, 209)' : 'white' }}>Aventura</button>
+                                <button onClick={() => { setCategory("drama") }} style={{ color: currentCategory === 'drama' ? 'rgb(171, 20, 209)' : 'white' }}>Drama</button>
+                                <button onClick={() => { setCategory("comedia") }} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</button>
+                                <button onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</button>
+                                <button style={{padding:'0 1vw'}} ><SearchIcon/></button>
                             </div>
+                            {!currentCategory && <div className='showcase fade-in' >
+                                <div>
+                                    <h1>Top 10 da semana</h1>
+                                </div>
+                                <div>
+                                    <h1>Melhores notas</h1>
+                                </div>
 
+                                <div>
+                                    <h1>Deixe sorte decidir</h1>
+                                </div>
+
+                            </div>}
                             {currentCategory && <div className={`filmes-grid fade-in`}>
                                 {data.results && data.results.map((movie) => (
                                     <MovieCard
@@ -148,7 +162,7 @@ const Dashboard = () => {
                                         <button
                                             className="page-button"
                                             onClick={() => {
-                                                changePage( 1);
+                                                changePage(1);
                                             }}
                                         >
                                             {1}
@@ -165,7 +179,7 @@ const Dashboard = () => {
                                         </button>
                                     )}
                                     <button
-                                        className="page-button active"
+                                        className="page-button actual"
                                     >
                                         {data.page}
                                     </button>
