@@ -191,53 +191,63 @@ label {
         font-weight: 600;
         transition: color 0.7s ease;
 
-    
+
 
     }
-    button.rosa{
+
+    button.rosa {
         border: 2px solid rgba(144, 26, 199, 0.5);
     }
-    button.azul{
+
+    button.azul {
         border: 2px solid rgba(88, 177, 236, 0.5);
 
     }
 
-    button.verde{
+    button.verde {
         border: 2px solid rgba(62, 241, 86, 0.5);
 
     }
 
     button:hover {
-        .rosa {
+        &.rosa {
             background-color: rgba(144, 26, 199, 0.329);
         }
-        .azul {
+
+        &.azul {
             background-color: rgba(88, 177, 236, 0.329);
         }
-        .verde {
+
+        &.verde {
             background-color: rgba(62, 241, 86, 0.329);
         }
     }
 
     input {
         background-color: rgb(14, 14, 14);
+
     }
 
     span {
         display: flex;
-
-        .rosa {
-            border: rgba(144, 26, 199, 0.329);
-        }
-        .azul {
-            border: rgba(88, 177, 236, 0.329);
-        }
-        .verde {
-            border: rgba(62, 241, 86, 0.329);
-        }
         padding: 2vh 1vw;
         border-radius: 200px;
         gap: 0.4vw;
+        background-color: rgb(14, 14, 14);
+        border: 2px solid rgba(144, 26, 199, 0.5);
+
+        &.rosa {
+            border: 2px solid rgba(144, 26, 199, 0.329);
+        }
+
+        &.azul {
+            border: 2px solid rgba(88, 177, 236, 0.329);
+        }
+
+        &.verde {
+            border: 2px solid rgba(62, 241, 86, 0.329);
+        }
+
 
         input {
             font-size: 2.3vh;
@@ -285,18 +295,52 @@ button {
     padding: 1vh 2vw;
     border-radius: 200px;
     background-color: rgb(14, 14, 14);
-    border: 2px solid rgba(144, 26, 199, 0.5);
+
+    &.rose {
+        border: 2px solid rgba(144, 26, 199, 0.5);
+    }
+
+    &.azul {
+        border: 2px solid rgba(88, 177, 236, 0.5);
+    }
+
+    &.verde {
+        border: 2px solid rgba(62, 241, 86, 0.5);
+    }
+
     color: white;
 }
 
 .page-button.actual {
     cursor: none;
-    background-color: rgba(144, 26, 199, 0.527);
+
+    &.rosa {
+        background-color: rgba(144, 26, 199, 0.527);
+    }
+
+    &.azul {
+        background-color: rgba(88, 177, 236, 0.527);
+    }
+
+    &.verde {
+        background-color: rgba(62, 241, 86, 0.527);
+    }
 }
 
 .page-button:hover {
     cursor: none;
-    background-color: rgba(144, 26, 199, 0.527);
+
+    &.rosa {
+        background-color: rgba(144, 26, 199, 0.527);
+    }
+
+    &.azul {
+        background-color: rgba(88, 177, 236, 0.527);
+    }
+
+    &.verde {
+        background-color: rgba(62, 241, 86, 0.527);
+    }
 }
 
 .pagination {
@@ -405,7 +449,17 @@ button {
     }
 
     h3:hover {
-        color: rgba(171, 20, 209, 1);
+        &.rosa {
+            color: rgba(144, 26, 199, 1);
+        }
+
+        &.azul {
+            color: rgba(88, 177, 236, 1);
+        }
+
+        &.verde {
+            color: rgba(62, 241, 86, 1);
+        }
     }
 
     .user-info {
@@ -413,8 +467,19 @@ button {
         gap: 2vw;
         padding: 2vh 2vw;
         border-radius: 200px;
-        background-color: rgba(144, 26, 199, 0.329);
-        border: 2px solid rgba(144, 26, 199, 0.5);
+
+        &.rosa {
+            background-color: rgba(144, 26, 199, 0.329);
+            border: 2px solid rgba(144, 26, 199, 0.5);
+        }
+        &.azul {
+            background-color: rgba(88, 177, 236, 0.329);
+            border: 2px solid rgba(88, 177, 236, 0.5);
+        }
+        &.verde {
+            background-color: rgba(62, 241, 86, 0.329);
+            border: 2px solid rgba(62, 241, 86, 0.5);
+        }
         cursor: none;
     }
 
@@ -422,7 +487,18 @@ button {
         padding: 5px;
         width: 2.5vw;
         height: 2.5vw;
-        background-color: rgba(144, 26, 199, 0.5);
+
+        &.rosa{
+            background-color: rgba(144, 26, 199, 0.5);
+        }
+        &.azul{
+            background-color: rgba(88, 177, 236, 0.5);
+        }
+        &.verde{
+            background-color: rgba(62, 241, 86, 0.5);
+        }
+
+        
         border-radius: 50%;
 
     }

@@ -139,14 +139,14 @@ const Dashboard = () => {
                     <div className={`page-content ${currentTab === 'filmes' ? 'fade-in' : 'fade-out'}`}>
                         {currentTab === 'filmes' && <div>
                             <div className='categorias'>
-                                <button className={themeColor} onClick={() => { setCategory("acao") }} style={{ color: currentCategory === 'acao' ? 'rgb(171, 20, 209)' : 'white' }}>Ação</button>
-                                <button className={themeColor} onClick={() => { setCategory("aventura") }} style={{ color: currentCategory === 'aventura' ? 'rgb(171, 20, 209)' : 'white' }}>Aventura</button>
-                                <button className={themeColor} onClick={() => { setCategory("drama") }} style={{ color: currentCategory === 'drama' ? 'rgb(171, 20, 209)' : 'white' }}>Drama</button>
-                                <button className={themeColor} onClick={() => { setCategory("comedia") }} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</button>
-                                <button className={themeColor} onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</button>
+                                <button className={themeColor} onClick={() => { setCategory("acao") }} style={{ color: currentCategory === 'acao' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}>Ação</button>
+                                <button className={themeColor} onClick={() => { setCategory("aventura") }} style={{ color: currentCategory === 'aventura' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}>Aventura</button>
+                                <button className={themeColor} onClick={() => { setCategory("drama") }} style={{ color: currentCategory === 'drama' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}>Drama</button>
+                                <button className={themeColor} onClick={() => { setCategory("comedia") }} style={{ color: currentCategory === 'comedia' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}>Comedia</button>
+                                <button className={themeColor} onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}>Infantil</button>
                                 <span className={themeColor} onInput={() => {
                                     setSearchQuery(document.getElementById('search-input').value)
-                                }} onClick={() => { setCategory("busca"); document.getElementById('search-input').focus() }} style={{ color: currentCategory === 'busca' ? 'rgb(171, 20, 209)' : 'white' }}  ><SearchIcon style={{ fontSize: "3vh" }} /> <input value={searchQuery} id='search-input' onChange={(e) => setSearchQuery(e.target.value)} /></span>
+                                }} onClick={() => { setCategory("busca"); document.getElementById('search-input').focus() }} style={{ color: currentCategory === 'busca' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}  ><SearchIcon  style={{ fontSize: "3vh" }} /> <input value={searchQuery} id='search-input' onChange={(e) => setSearchQuery(e.target.value)} /></span>
 
                             </div>
                             {!currentCategory && <div className='showcase fade-in' >
@@ -185,7 +185,7 @@ const Dashboard = () => {
                                 currentCategory && (<div className="pagination">
                                     {categoryMovies.page > 2 && (
                                         <button
-                                            className="page-button"
+                                            className={`page-button ${themeColor}`}
                                             onClick={() => {
                                                 changePage(1);
                                             }}
@@ -195,7 +195,7 @@ const Dashboard = () => {
                                     )}
                                     {categoryMovies.page > 1 && (
                                         <button
-                                            className="page-button"
+                                            className={`page-button ${themeColor}`}
                                             onClick={() => {
                                                 changePage(categoryMovies.page - 1);
                                             }}
@@ -204,13 +204,13 @@ const Dashboard = () => {
                                         </button>
                                     )}
                                     <button
-                                        className="page-button actual"
+                                        className={`page-button ${themeColor}`}
                                     >
                                         {categoryMovies.page}
                                     </button>
                                     {(categoryMovies.page < categoryMovies.total_pages && categoryMovies.page < 400) && (
                                         <button
-                                            className="page-button"
+                                            className={`page-button ${themeColor}`}
                                             onClick={() => {
                                                 changePage(categoryMovies.page + 1);
                                             }}
@@ -220,7 +220,7 @@ const Dashboard = () => {
                                     )}
                                     {categoryMovies.page < 399 && (
                                         <button
-                                            className="page-button"
+                                            className={`page-button ${themeColor}`}
                                             onClick={() => {
                                                 changePage(400);
                                             }}
@@ -240,7 +240,7 @@ const Dashboard = () => {
                                 aria-describedby="modal-description"
                                 style={{ cursor: 'none' }}
                             >
-                                <div className="modal-content neon-border-strong">
+                                <div className={`modal-content neon-border-strong ${themeColor}`}>
                                     <div className="modal-left">
                                         <h2 id="modal-title">{infoMovie.title}</h2>
                                         <p id="modal-description">{infoMovie.overview}</p>
@@ -260,16 +260,16 @@ const Dashboard = () => {
                     <div className={`page-content ${currentTab === 'perfil' ? 'fade-in' : 'fade-out'}`}>
                         {currentTab === 'perfil' && <div>
                             <div className='perfil-container'>
-                                <div className='user-info'>
+                                <div className={`user-info ${themeColor}`}>
                                     <Avatar sx={{ width: 150, height: 150 }} src={perfilIcon} />
                                     <h2>Nome do usuário</h2>
 
 
                                 </div>
 
-                                <h3>Email : email@email.com <ModeEditIcon className='central-circle' /></h3>
-                                <h3>Nome : Nome do Usuario  <ModeEditIcon className='central-circle' /> </h3>
-                                <h3>Senha : **************  <ModeEditIcon className='central-circle' /></h3>
+                                <h3 className={themeColor}>Email : email@email.com <ModeEditIcon className={`central-circle ${themeColor}`} /></h3>
+                                <h3 className={themeColor}>Nome : Nome do Usuario  <ModeEditIcon className={`central-circle ${themeColor}`} /> </h3>
+                                <h3 className={themeColor}>Senha : **************  <ModeEditIcon className={`central-circle ${themeColor}`} /></h3>
 
 
 

@@ -155,12 +155,15 @@ h2 {
 
 .neon-border-strong {
     border: 1px solid #ff00ff;
-    box-shadow:
-        0 0 5px #ff00ff5d,
-        0 0 10px #ff00ff81,
-        0 0 15px #ff00ff9a,
-        0 0 20px #ff00ff9d,
-        0 0 25px #ff00ff6c;
+
+    &.rosa {
+        box-shadow:
+            0 0 5px #ff00ff5d,
+            0 0 10px #ff00ff81,
+            0 0 15px #ff00ff9a,
+            0 0 20px #ff00ff9d,
+            0 0 25px #ff00ff6c;
+    }
 
     &.azul {
         border: 1px solid #00f1ff;
