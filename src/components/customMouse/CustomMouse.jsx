@@ -1,41 +1,34 @@
-import React from "react"
-import "./CustomMouse.css"
-import img from "./pinkMouse.png"
+import React, { useRef, useEffect } from "react";
+import "./CustomMouse.css";
 
-export function CustomMouse() {
-    
-    const cursorRef = React.useRef(null)
 
-    function renderMouse(event) {
-        if (!cursorRef.current) {
-            return
-        }
-        const { clientX, clientY } = event;
-        const mouseX = clientX - 8
-        const mouseY = clientY - 2
-        cursorRef.current.style.transform = "translate3d(" + mouseX + "px, " + mouseY + "px,0)"
-    }
 
-    function HideMouse(event) {
-        if (!cursorRef.current) {
-            return
-        }
-        const { clientX, clientY } = event;
-        const mouseX = clientX - 999
-        const mouseY = clientY - 999
-        cursorRef.current.style.transform = "translate3d(" + mouseX + "px, " + mouseY + "px,0)"
-    }
+export function CustomMouse({ cursorImage }) {
+    const cursorRef = useRef(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+            if (cursorRef.current) {
+                const mouseX = event.clientX - 8;
+                const mouseY = event.clientY - 2;
+                cursorRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+            }
+        };
 
-        document.addEventListener("mousemove", renderMouse)
-        // window.addEventListener('DOMContentLoaded', renderMouse);
-        document.addEventListener("mouseleave", HideMouse)
+        const handleMouseLeave = () => {
+            if (cursorRef.current) {
+                cursorRef.current.style.transform = "translate3d(-9999px, -9999px, 0)";
+            }
+        };
 
-    })
+        document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseleave", handleMouseLeave);
 
-    return (
-        // <div className="cursor" ref={cursorRef}></div>
-        <img id="cursor" src={img} alt="" ref={cursorRef}></img>
-    )
+        return () => {
+            document.removeEventListener("mousemove", handleMouseMove);
+            document.removeEventListener("mouseleave", handleMouseLeave);
+        };
+    }, []);
+
+    return <img id="cursor" src={cursorImage} alt="Custom Mouse" ref={cursorRef} />;
 }

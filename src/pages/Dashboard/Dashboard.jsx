@@ -13,6 +13,9 @@ import { useNavigate } from 'react-router-dom';
 import { Avatar, Modal } from '@mui/material';
 import perfilIcon from '../../assets/profileIcon.jpg';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import pinkMouse from "../../components/customMouse/pinkMouse.png";
+import blueMouse from "../../components/customMouse/blueMouse.png";
+import greenMouse from "../../components/customMouse/greenMouse.png";
 
 
 const Dashboard = () => {
@@ -33,6 +36,8 @@ const Dashboard = () => {
     const [modalIsOpen, setModalIsOpen] = React.useState(false);
 
     const [themeColor, setThemeColor] = React.useState('rosa');
+
+    const [imgCursor, setImgCursor] = React.useState(blueMouse);
 
 
     useEffect(() => {
@@ -108,11 +113,12 @@ const Dashboard = () => {
 
     const handleThemeChange = (color) => {
         setThemeColor(color);
+        setImgCursor(color === 'rosa' ? pinkMouse : color === 'azul' ? blueMouse : greenMouse);
     }
 
     return (
         <>
-            <CustomMouse />
+            <CustomMouse cursorImage={imgCursor}/>
             <div id='main-container' className={`main-container`} >
                 <div
                     className={`sidebar neon-border  ${themeColor}`}
@@ -282,7 +288,7 @@ const Dashboard = () => {
                     <div className={`page-content ${currentTab === 'config' ? 'fade-in' : 'fade-out'}`}>
                         {currentTab === 'config' && <div>
                             <div className='config-container'>
-                                <h2 className={themeColor} >Mudança de tema</h2>
+                                <h2 className={themeColor} >Mudança do tema</h2>
                                 <div className='tema-container'>
                                     <div onClick={() => { handleThemeChange('rosa') }} className='tema' style={{ backgroundColor: 'rgb(171, 20, 209)' }}></div>
                                     <div onClick={() => { handleThemeChange('azul') }} className='tema' style={{ backgroundColor: 'rgb(89, 167, 255)' }}></div>
