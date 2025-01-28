@@ -296,11 +296,13 @@ const Dashboard = () => {
                                         <h2 id="modal-title">{infoMovie.title}</h2>
                                         <p id="modal-description">{infoMovie.overview}</p>
                                     </div>
+                                   {infoMovie.vote_count > 0 &&<div className='nota' style={{ backgroundColor: infoMovie.vote_average >= 7 ? 'green' : infoMovie.vote_average >= 5 ? 'rgb(102, 102, 7)' : 'red' }}>
+                                        {infoMovie.vote_average.toFixed(1)}
+                                    </div>}
                                     <div className="modal-right">
                                         <img src={`https://image.tmdb.org/t/p/w500${infoMovie.backdrop_path}`} alt={infoMovie.title} />
                                         <div className="modal-info">
-                                            <p>Nota: {infoMovie.vote_average.toFixed(1)}</p>
-                                            <p>Qtd votos: {infoMovie.vote_count}</p>
+                                            { infoMovie.vote_count > 0 && <p>Qtd votos: {infoMovie.vote_count}</p>}
                                             <p>{new Date(infoMovie.release_date).toLocaleDateString('pt-BR')}</p>
                                         </div>
                                     </div>
