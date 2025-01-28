@@ -17,7 +17,7 @@ export function LampDemo() {
     transitionElement.style.left = 0;
     transitionElement.style.width = "100%";
     transitionElement.style.height = "100%";
-    transitionElement.style.background = "radial-gradient(circle, #ff00dd, #23b6c0)";
+    transitionElement.style.background = "radial-gradient(circle, #960d84, #188f97)";
     transitionElement.style.zIndex = 9999;
     transitionElement.style.transition = "opacity 0.5s ease-in-out";
     transitionElement.style.opacity = 0;

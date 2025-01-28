@@ -117,6 +117,45 @@ const Dashboard = () => {
         setImgCursor(color === 'rosa' ? pinkMouse : color === 'azul' ? blueMouse : greenMouse);
     }
 
+    const handleExit = () => {
+        const transitionElement = document.createElement("div");
+        transitionElement.style.position = "fixed";
+        transitionElement.style.top = 0;
+        transitionElement.style.left = 0;
+        transitionElement.style.width = "100%";
+        transitionElement.style.height = "100%";
+        transitionElement.style.background = "radial-gradient(circle, #570a4c, #104f53)";
+        transitionElement.style.zIndex = 9999;
+        transitionElement.style.transition = "opacity 0.5s ease-in-out";
+        transitionElement.style.opacity = 0;
+        transitionElement.innerHTML = "<h1 class='neonText' style='text-align: center; margin-top: 20%; font-size: 3rem; animation: grow 0.5s forwards;'>Até Logo</h1>";
+        const style = document.createElement('style');
+        style.innerHTML = `
+          @keyframes grow {
+          from { font-size: 3rem; }
+          to { font-size: 7rem; }
+          }
+        `;
+        document.head.appendChild(style);
+        document.body.appendChild(transitionElement);
+
+        requestAnimationFrame(() => {
+            transitionElement.style.opacity = 1;
+        });
+
+        setTimeout(() => {
+            nav("/");
+        }, 500);
+
+        setTimeout(() => {
+            transitionElement.style.opacity = 0;
+            setTimeout(() => {
+                document.body.removeChild(transitionElement);
+                document.head.removeChild(style);
+            }, 500);
+        }, 1500);
+    };
+
     return (
         <>
             <CustomMouse cursorImage={imgCursor} />
@@ -140,7 +179,7 @@ const Dashboard = () => {
                             <SettingsIcon style={{ color: currentTab === 'config' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }} />
                             {isSidebarHovered && <label style={{ color: currentTab === 'config' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}>Config</label>}
                         </div>
-                        <div className={`icon-sidebar ${themeColor}`} onClick={() => nav('/')}>
+                        <div className={`icon-sidebar ${themeColor}`} onClick={() => handleExit()}>
                             <LogoutIcon style={{ color: currentTab === 'exit' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }} />
                             {isSidebarHovered && <label style={{ color: currentTab === 'exit' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}>Sair</label>}
                         </div>

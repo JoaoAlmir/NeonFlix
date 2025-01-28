@@ -7,67 +7,67 @@ export function HeroParallaxDemo() {
 }
 export const products = [
     {
-        title: "Inception"  ,
+        title: "A Origem",
         thumbnail:
             "https://media.themoviedb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
     },
     {
-        title: "Interstellar",
+        title: "Interestelar",
         thumbnail:
             "https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
     },
     {
-        title: "The Dark Knight",
+        title: "O Cavaleiro das Trevas",
         thumbnail:
             "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
     },
     {
-        title: "Fight Club",
+        title: "Clube da Luta",
         thumbnail:
             "https://image.tmdb.org/t/p/w500/bptfVGEQuv6vDTIMVCHjJ9Dz8PX.jpg",
     },
     {
-        title: "Pulp Fiction",
+        title: "Pulp Fiction: Tempo de Violência",
         thumbnail:
             "https://image.tmdb.org/t/p/w500/dM2w364MScsjFf8pfMbaWUcWrR.jpg",
     },
     {
-        title: "The Matrix",
+        title: "Matrix",
         thumbnail:
             "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
     },
     {
-        title: "The Shawshank Redemption",
+        title: "Um Sonho de Liberdade",
         thumbnail:
             "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
     },
     {
-        title: "Forrest Gump",
+        title: "Forrest Gump: O Contador de Histórias",
         thumbnail:
             "https://image.tmdb.org/t/p/w500/saHP97rTPS5eLmrLQEcANmKrsFl.jpg",
     },
     {
-        title: "The Godfather",
+        title: "O Poderoso Chefão",
         thumbnail:
             "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
     },
     {
-        title: "The Lord of the Rings: The Fellowship of the Ring",
+        title: "O Senhor dos Anéis: A Sociedade do Anel",
         thumbnail:
             "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
     },
     {
-        title: "Star Wars: Episode IV - A New Hope",
+        title: "Star Wars: Episódio IV - Uma Nova Esperança",
         thumbnail:
             "https://image.tmdb.org/t/p/w500/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
     },
     {
-        title: "The Avengers",
+        title: "Os Vingadores",
         thumbnail:
             "https://image.tmdb.org/t/p/w500/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
     },
     {
-        title: "Jurassic Park",
+        title: "Jurassic Park: O Parque dos Dinossauros",
         thumbnail:
             "https://image.tmdb.org/t/p/w500/9i3plLl89DHMz7mahksDaAo7HIS.jpg",
     },
