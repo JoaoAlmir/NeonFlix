@@ -40,7 +40,7 @@
     background-color: rgb(14, 14, 14);
     padding: 22vh 0 0 1.5vw;
     cursor: none;
-    gap: 15vh;
+    gap: 10vh;
     border-top-right-radius: 300px;
     border-bottom-right-radius: 300px;
     width: 4.5vw;
@@ -62,7 +62,8 @@
 .icon-sidebar {
     display: flex;
     width: 100%;
-    gap: 1.5vw;
+    gap: 2vh;
+    padding: 2vh 0;
 
     svg {
         width: 1.5vw;
@@ -82,6 +83,7 @@
     }
 
 
+
     label {
         font-size: 1vw;
     }
@@ -91,6 +93,8 @@ label {
     cursor: none;
     font-size: 1.5vw;
 }
+
+
 
 .icon-sidebar svg {
     transition: fill 0.3s ease;

@@ -16,6 +16,7 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import pinkMouse from "../../components/customMouse/pinkMouse.png";
 import blueMouse from "../../components/customMouse/blueMouse.png";
 import greenMouse from "../../components/customMouse/greenMouse.png";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
 const Dashboard = () => {
@@ -37,7 +38,7 @@ const Dashboard = () => {
 
     const [themeColor, setThemeColor] = React.useState('rosa');
 
-    const [imgCursor, setImgCursor] = React.useState(blueMouse);
+    const [imgCursor, setImgCursor] = React.useState(pinkMouse);
 
 
     useEffect(() => {
@@ -118,14 +119,14 @@ const Dashboard = () => {
 
     return (
         <>
-            <CustomMouse cursorImage={imgCursor}/>
+            <CustomMouse cursorImage={imgCursor} />
             <div id='main-container' className={`main-container`} >
                 <div
                     className={`sidebar neon-border  ${themeColor}`}
                     onMouseEnter={() => setIsSidebarHovered(true)}
                     onMouseLeave={() => setIsSidebarHovered(false)}
                 >
-                    <label className={`neonTextLower ${themeColor}`} onClick={() => { nav('/') }} >{isSidebarHovered ? 'NeonFlix' : 'NF'} </label>
+                    <label className={`neonTextLower ${themeColor}`} >{isSidebarHovered ? 'NeonFlix' : 'NF'} </label>
                     <div className='sidebar-menu'>
                         <div className={`icon-sidebar ${themeColor}`} onClick={() => setCurrentTab('filmes')}>
                             <ViewAgendaIcon style={{ color: currentTab === 'filmes' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }} />
@@ -139,6 +140,11 @@ const Dashboard = () => {
                             <SettingsIcon style={{ color: currentTab === 'config' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }} />
                             {isSidebarHovered && <label style={{ color: currentTab === 'config' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}>Config</label>}
                         </div>
+                        <div className={`icon-sidebar ${themeColor}`} onClick={() => nav('/')}>
+                            <LogoutIcon style={{ color: currentTab === 'exit' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }} />
+                            {isSidebarHovered && <label style={{ color: currentTab === 'exit' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}>Sair</label>}
+                        </div>
+
                     </div>
                 </div>
                 <div className={`page-container neon-border ${themeColor} `}>
@@ -152,7 +158,7 @@ const Dashboard = () => {
                                 <button className={themeColor} onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}>Infantil</button>
                                 <span className={themeColor} onInput={() => {
                                     setSearchQuery(document.getElementById('search-input').value)
-                                }} onClick={() => { setCategory("busca"); document.getElementById('search-input').focus() }} style={{ color: currentCategory === 'busca' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}  ><SearchIcon  style={{ fontSize: "3vh" }} /> <input value={searchQuery} id='search-input' onChange={(e) => setSearchQuery(e.target.value)} /></span>
+                                }} onClick={() => { setCategory("busca"); document.getElementById('search-input').focus() }} style={{ color: currentCategory === 'busca' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}  ><SearchIcon style={{ fontSize: "3vh" }} /> <input value={searchQuery} id='search-input' onChange={(e) => setSearchQuery(e.target.value)} /></span>
 
                             </div>
                             {!currentCategory && <div className='showcase fade-in' >
