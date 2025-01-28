@@ -60,23 +60,51 @@ h2 {
 
 .neonTextLower {
     color: #fff;
-    text-shadow:
-        0 0 3px #551ed693,
-        0 0 3px #bb21bb,
-        0 0 3px #da25d16b,
-        0 0 3px rgb(55, 0, 255),
-        0 0 3px rgba(4, 0, 255, 0.26),
-        0 0 3px rgb(222, 66, 236),
-        0 0 3px rgb(67, 56, 221),
-        0 0 3px rgb(116, 52, 233);
+
     animation: neon 1.5s infinite alternate;
+
+    &.rosa {
+        text-shadow:
+            0 0 3px #551ed693,
+            0 0 3px #bb21bb,
+            0 0 3px #da25d16b,
+            0 0 3px rgb(55, 0, 255),
+            0 0 3px rgba(4, 0, 255, 0.26),
+            0 0 3px rgb(222, 66, 236),
+            0 0 3px rgb(67, 56, 221),
+            0 0 3px rgb(116, 52, 233);
+    }
+
+    &.azul {
+        text-shadow:
+            0 0 3px #00f1ff,
+            0 0 3px #00f1ff,
+            0 0 3px #00f1ff,
+            0 0 3px #00f1ff,
+            0 0 3px #00f1ff,
+            0 0 3px #00f1ff,
+            0 0 3px #00f1ff,
+            0 0 3px #00f1ff;
+    }
+
+    &.verde {
+        text-shadow:
+            0 0 3px #048813,
+            0 0 3px #068118,
+            0 0 3px #088514,
+            0 0 3px #058f0e,
+            0 0 3px #055f0e,
+            0 0 3px #0d811b,
+            0 0 3px #048813,
+            0 0 3px #068118;
+    }
 }
 
 .neonText:hover {
     animation: neon 1s infinite alternate;
 }
 
-.borderText{
+.borderText {
     color: #fff;
     text-shadow:
         0 0 2px #ffffff,
@@ -93,6 +121,36 @@ h2 {
         0 0 15px #ff00ff13,
         0 0 20px #ff00ff18,
         0 0 25px #ff00ff1e;
+
+    &.azul {
+        border: 1px solid #00f1ff1f;
+        box-shadow:
+            0 0 5px #00f1ff28,
+            0 0 10px #00f1ff18,
+            0 0 15px #00f1ff13,
+            0 0 20px #00f1ff18,
+            0 0 25px #00f1ff1e;
+    }
+
+    &.verde {
+        border: 1px solid #048813;
+        box-shadow:
+            0 0 5px #068118,
+            0 0 10px #088514,
+            0 0 15px #058f0e,
+            0 0 20px #055f0e,
+            0 0 25px #0d811b;
+    }
+
+    &.rosa {
+        border: 1px solid #ff00ff1f;
+        box-shadow:
+            0 0 5px #ff00ff28,
+            0 0 10px #ff00ff18,
+            0 0 15px #ff00ff13,
+            0 0 20px #ff00ff18,
+            0 0 25px #ff00ff1e;
+    }
 }
 
 .neon-border-strong {
@@ -103,10 +161,30 @@ h2 {
         0 0 15px #ff00ff9a,
         0 0 20px #ff00ff9d,
         0 0 25px #ff00ff6c;
+
+    &.azul {
+        border: 1px solid #00f1ff;
+        box-shadow:
+            0 0 5px #00f1ff5d,
+            0 0 10px #00f1ff81,
+            0 0 15px #00f1ff9a,
+            0 0 20px #00f1ff9d,
+            0 0 25px #00f1ff6c;
+    }
+
+    &.verde {
+        border: 1px solid #00ff;
+        box-shadow:
+            0 0 5px #00ff5d,
+            0 0 10px #00ff81,
+            0 0 15px #00ff9a,
+            0 0 20px #00ff9d,
+            0 0 25px #00ff6c;
+    }
 }
 
 
-.background-people{
+.background-people {
     pointer-events: none;
     display: flex;
     justify-content: center;
@@ -119,7 +197,7 @@ h2 {
 
 
 
-.tv-people-image{
+.tv-people-image {
     animation: darkenBackground 2s infinite alternate;
     pointer-events: none;
     width: 100%;
@@ -131,9 +209,11 @@ h2 {
     0% {
         filter: brightness(0.08) sepia(1) hue-rotate(270deg) saturate(5);
     }
+
     50% {
         filter: brightness(0.15) sepia(1) hue-rotate(270deg) saturate(5);
     }
+
     100% {
         filter: brightness(0.08) sepia(1) hue-rotate(270deg) saturate(5);
     }
@@ -147,7 +227,7 @@ h2 {
     padding-top: 4vh;
 }
 
-.family{
+.family {
     display: flex;
     filter: drop-shadow(0 0 40px white);
     font-weight: bold;

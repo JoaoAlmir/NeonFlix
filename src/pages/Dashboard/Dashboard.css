@@ -68,8 +68,16 @@
         width: 1.5vw;
         height: 1.5vw;
 
-        &:hover {
+        &.rosa:hover {
             fill: rgb(171, 20, 209);
+        }
+
+        &.azul:hover {
+            fill: rgb(88, 177, 236);
+        }
+
+        &.verde:hover {
+            fill: rgb(62, 241, 86);
         }
     }
 
@@ -120,7 +128,7 @@ label {
 }
 
 .fade-in-fast {
-    
+
     animation: fadeIn 0.7s forwards;
 }
 
@@ -182,30 +190,62 @@ label {
         font-size: 1.5vw;
         font-weight: 600;
         transition: color 0.7s ease;
+
+    
+
+    }
+    button.rosa{
         border: 2px solid rgba(144, 26, 199, 0.5);
+    }
+    button.azul{
+        border: 2px solid rgba(88, 177, 236, 0.5);
 
     }
-    button:hover{
-        background-color: rgba(144, 26, 199, 0.329);
+
+    button.verde{
+        border: 2px solid rgba(62, 241, 86, 0.5);
+
     }
 
-    input{
+    button:hover {
+        .rosa {
+            background-color: rgba(144, 26, 199, 0.329);
+        }
+        .azul {
+            background-color: rgba(88, 177, 236, 0.329);
+        }
+        .verde {
+            background-color: rgba(62, 241, 86, 0.329);
+        }
+    }
+
+    input {
         background-color: rgb(14, 14, 14);
     }
 
-    span{
+    span {
         display: flex;
-        border: 2px solid rgba(144, 26, 199, 0.5);
+
+        .rosa {
+            border: rgba(144, 26, 199, 0.329);
+        }
+        .azul {
+            border: rgba(88, 177, 236, 0.329);
+        }
+        .verde {
+            border: rgba(62, 241, 86, 0.329);
+        }
         padding: 2vh 1vw;
         border-radius: 200px;
         gap: 0.4vw;
 
-        input{
+        input {
             font-size: 2.3vh;
             cursor: none;
             height: 2.4vh;
             width: 7vw;
         }
+
         input:focus {
             outline: none;
         }
@@ -249,14 +289,14 @@ button {
     color: white;
 }
 
-.page-button.actual{
+.page-button.actual {
     cursor: none;
     background-color: rgba(144, 26, 199, 0.527);
 }
 
 .page-button:hover {
     cursor: none;
-    background-color: rgba(144, 26, 199, 0.527);    
+    background-color: rgba(144, 26, 199, 0.527);
 }
 
 .pagination {
@@ -265,24 +305,25 @@ button {
     align-items: center;
     gap: 1vw;
     margin: 2vh auto;
-    text-align: center; 
-    width: fit-content; 
+    text-align: center;
+    width: fit-content;
     user-select: none;
 }
 
-.showcase{
+.showcase {
     margin-top: 5vh;
     display: flex;
     flex-direction: column;
     gap: 15vh;
+
     /* text-align: center;  */
-    h1{
+    h1 {
         font-size: 2vw;
         font-weight: 600;
     }
 }
 
-.modal-content{
+.modal-content {
     cursor: none;
     padding: 5vh 3vw;
     width: 80vw;
@@ -297,39 +338,39 @@ button {
     border-radius: 100px;
 }
 
-.modal-left{
+.modal-left {
     display: flex;
     flex-direction: column;
     gap: 3vh;
     padding: 0 5vw;
 
-    p{
+    p {
         font-size: 2vh;
         font-weight: 400;
     }
 }
 
-.modal-right{
-    img{
+.modal-right {
+    img {
         max-width: 80vw;
         max-height: 60vh;
         width: auto;
         height: auto;
-        border-radius: 50px;        
+        border-radius: 50px;
     }
 
-    img:hover{
+    img:hover {
         filter: brightness(0.2);
 
     }
 
-    p{
+    p {
         font-size: 2vh;
         font-weight: 600;
     }
 
-    }
-    
+}
+
 
 
 
@@ -337,17 +378,18 @@ button {
     cursor: default;
 }
 
-.modal-info{
+.modal-info {
     display: flex;
     justify-content: space-between;
     padding: 0 2vw;
 }
 
-.perfil-container{
+.perfil-container {
     display: flex;
     flex-direction: column;
     gap: 8vh;
-    h2{
+
+    h2 {
         padding: 0 2vw;
         display: flex;
         align-items: center;
@@ -366,7 +408,7 @@ button {
         color: rgba(171, 20, 209, 1);
     }
 
-    .user-info{
+    .user-info {
         display: flex;
         gap: 2vw;
         padding: 2vh 2vw;
@@ -382,6 +424,39 @@ button {
         height: 2.5vw;
         background-color: rgba(144, 26, 199, 0.5);
         border-radius: 50%;
-       
+
+    }
+}
+
+.config-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    padding: 2vh 2vw;
+
+    h2 {
+        font-size: 2vw;
+        font-weight: 600;
+
+    }
+
+    .tema-container {
+        display: flex;
+        gap: 2vw;
+        margin-top: 2vh;
+    }
+
+    .tema {
+        width: 5vw;
+        height: 5vw;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+
+
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    }
+
+    .tema:hover {
+        transform: scale(1.1);
     }
 }

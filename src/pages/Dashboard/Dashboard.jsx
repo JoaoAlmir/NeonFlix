@@ -32,6 +32,8 @@ const Dashboard = () => {
     const [infoMovie, setInfoMovie] = React.useState(null);
     const [modalIsOpen, setModalIsOpen] = React.useState(false);
 
+    const [themeColor, setThemeColor] = React.useState('rosa');
+
 
     useEffect(() => {
         fetchRandomMovie().then(movies => setRandomMovies(movies));
@@ -103,41 +105,46 @@ const Dashboard = () => {
         }, 500);
     };
 
+
+    const handleThemeChange = (color) => {
+        setThemeColor(color);
+    }
+
     return (
         <>
             <CustomMouse />
-            <div className={`main-container`} >
+            <div id='main-container' className={`main-container`} >
                 <div
-                    className='sidebar neon-border'
+                    className={`sidebar neon-border  ${themeColor}`}
                     onMouseEnter={() => setIsSidebarHovered(true)}
                     onMouseLeave={() => setIsSidebarHovered(false)}
                 >
-                    <label className='neonTextLower' onClick={() => { nav('/') }} >{isSidebarHovered ? 'NeonFlix' : 'NF'} </label>
+                    <label className={`neonTextLower ${themeColor}`} onClick={() => { nav('/') }} >{isSidebarHovered ? 'NeonFlix' : 'NF'} </label>
                     <div className='sidebar-menu'>
-                        <div className='icon-sidebar' onClick={() => setCurrentTab('filmes')}>
-                            <ViewAgendaIcon style={{ color: currentTab === 'filmes' ? 'rgb(171, 20, 209)' : 'white' }} />
-                            {isSidebarHovered && <label style={{ color: currentTab === 'filmes' ? 'rgb(171, 20, 209)' : 'white' }} >Filmes</label>}
+                        <div className={`icon-sidebar ${themeColor}`} onClick={() => setCurrentTab('filmes')}>
+                            <ViewAgendaIcon style={{ color: currentTab === 'filmes' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }} />
+                            {isSidebarHovered && <label style={{ color: currentTab === 'filmes' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }} >Filmes</label>}
                         </div>
-                        <div className='icon-sidebar' onClick={() => setCurrentTab('perfil')}>
-                            <PersonIcon style={{ color: currentTab === 'perfil' ? 'rgb(171, 20, 209)' : 'white' }} />
-                            {isSidebarHovered && <label style={{ color: currentTab === 'perfil' ? 'rgb(171, 20, 209)' : 'white' }} >Perfil</label>}
+                        <div className={`icon-sidebar ${themeColor}`} onClick={() => setCurrentTab('perfil')}>
+                            <PersonIcon style={{ color: currentTab === 'perfil' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }} />
+                            {isSidebarHovered && <label style={{ color: currentTab === 'perfil' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }} >Perfil</label>}
                         </div>
-                        <div className='icon-sidebar' onClick={() => setCurrentTab('config')}>
-                            <SettingsIcon style={{ color: currentTab === 'config' ? 'rgb(171, 20, 209)' : 'white' }} />
-                            {isSidebarHovered && <label style={{ color: currentTab === 'config' ? 'rgb(171, 20, 209)' : 'white' }}>Config</label>}
+                        <div className={`icon-sidebar ${themeColor}`} onClick={() => setCurrentTab('config')}>
+                            <SettingsIcon style={{ color: currentTab === 'config' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }} />
+                            {isSidebarHovered && <label style={{ color: currentTab === 'config' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }}>Config</label>}
                         </div>
                     </div>
                 </div>
-                <div className='page-container neon-border'>
+                <div className={`page-container neon-border ${themeColor} `}>
                     <div className={`page-content ${currentTab === 'filmes' ? 'fade-in' : 'fade-out'}`}>
                         {currentTab === 'filmes' && <div>
                             <div className='categorias'>
-                                <button onClick={() => { setCategory("acao") }} style={{ color: currentCategory === 'acao' ? 'rgb(171, 20, 209)' : 'white' }}>Ação</button>
-                                <button onClick={() => { setCategory("aventura") }} style={{ color: currentCategory === 'aventura' ? 'rgb(171, 20, 209)' : 'white' }}>Aventura</button>
-                                <button onClick={() => { setCategory("drama") }} style={{ color: currentCategory === 'drama' ? 'rgb(171, 20, 209)' : 'white' }}>Drama</button>
-                                <button onClick={() => { setCategory("comedia") }} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</button>
-                                <button onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</button>
-                                <span onInput={() => {
+                                <button className={themeColor} onClick={() => { setCategory("acao") }} style={{ color: currentCategory === 'acao' ? 'rgb(171, 20, 209)' : 'white' }}>Ação</button>
+                                <button className={themeColor} onClick={() => { setCategory("aventura") }} style={{ color: currentCategory === 'aventura' ? 'rgb(171, 20, 209)' : 'white' }}>Aventura</button>
+                                <button className={themeColor} onClick={() => { setCategory("drama") }} style={{ color: currentCategory === 'drama' ? 'rgb(171, 20, 209)' : 'white' }}>Drama</button>
+                                <button className={themeColor} onClick={() => { setCategory("comedia") }} style={{ color: currentCategory === 'comedia' ? 'rgb(171, 20, 209)' : 'white' }}>Comedia</button>
+                                <button className={themeColor} onClick={() => { setCategory("infantil") }} style={{ color: currentCategory === 'infantil' ? 'rgb(171, 20, 209)' : 'white' }}>Infantil</button>
+                                <span className={themeColor} onInput={() => {
                                     setSearchQuery(document.getElementById('search-input').value)
                                 }} onClick={() => { setCategory("busca"); document.getElementById('search-input').focus() }} style={{ color: currentCategory === 'busca' ? 'rgb(171, 20, 209)' : 'white' }}  ><SearchIcon style={{ fontSize: "3vh" }} /> <input value={searchQuery} id='search-input' onChange={(e) => setSearchQuery(e.target.value)} /></span>
 
@@ -254,17 +261,17 @@ const Dashboard = () => {
                         {currentTab === 'perfil' && <div>
                             <div className='perfil-container'>
                                 <div className='user-info'>
-                                <Avatar sx={{ width: 150, height: 150 }} src={perfilIcon} />
-                                <h2>Nome do usuário</h2>
-                                
+                                    <Avatar sx={{ width: 150, height: 150 }} src={perfilIcon} />
+                                    <h2>Nome do usuário</h2>
+
 
                                 </div>
 
-                                <h3>Email : email@email.com <ModeEditIcon className='central-circle'/></h3>
-                                <h3>Nome : Nome do Usuario  <ModeEditIcon className='central-circle'/> </h3>        
-                                <h3>Senha : **************  <ModeEditIcon className='central-circle'/></h3>
-                                               
-                                
+                                <h3>Email : email@email.com <ModeEditIcon className='central-circle' /></h3>
+                                <h3>Nome : Nome do Usuario  <ModeEditIcon className='central-circle' /> </h3>
+                                <h3>Senha : **************  <ModeEditIcon className='central-circle' /></h3>
+
+
 
 
                             </div>
@@ -274,9 +281,15 @@ const Dashboard = () => {
                     </div>
                     <div className={`page-content ${currentTab === 'config' ? 'fade-in' : 'fade-out'}`}>
                         {currentTab === 'config' && <div>
-                            <h2>Mudança do tema</h2>
+                            <div className='config-container'>
+                                <h2 className={themeColor} >Mudança de tema</h2>
+                                <div className='tema-container'>
+                                    <div onClick={() => { handleThemeChange('rosa') }} className='tema' style={{ backgroundColor: 'rgb(171, 20, 209)' }}></div>
+                                    <div onClick={() => { handleThemeChange('azul') }} className='tema' style={{ backgroundColor: 'rgb(89, 167, 255)' }}></div>
+                                    <div onClick={() => { handleThemeChange('verde') }} className='tema' style={{ backgroundColor: 'rgb(20, 209, 20)' }}></div>
+                                </div>
 
-                            
+                            </div>
                         </div>}
                     </div>
                 </div>
