@@ -157,7 +157,7 @@ const Dashboard = () => {
     };
 
     return (
-        <>
+        <div className='dashboard'>
             <CustomMouse cursorImage={imgCursor} />
             <div id='main-container' className={`main-container`} >
                 <div
@@ -348,7 +348,7 @@ const Dashboard = () => {
                 </div>
             </div>
 
-        </>
+        </div>
     );
 };
 

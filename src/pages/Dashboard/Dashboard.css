@@ -1,3 +1,8 @@
+.dashboard {
+    cursor: none;
+    overflow: hidden;
+}
+
 .main-container {
     cursor: none;
     display: flex;
@@ -115,6 +120,10 @@ label {
     /* For Firefox */
     -ms-overflow-style: none;
     /* For Internet Explorer and Edge */
+
+    @media (max-width: 768px) {
+        border-radius: 5px;
+    }
 }
 
 .page-container::-webkit-scrollbar {
@@ -195,7 +204,22 @@ label {
         font-weight: 600;
         transition: color 0.7s ease;
 
+        @media (max-width: 768px) {
+            font-size: 3vw;
+            padding: 0;
+            margin: 0;
+            border-radius: 20px;
+            height: 4vh;
+            padding: 0 2vw;
 
+        }
+
+
+
+
+    }
+    @media (max-width: 768px) {
+        gap:0
 
     }
 
@@ -274,6 +298,11 @@ label {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
+
+    @media (max-width: 768px) {
+        gap: 5px
+
+    }
 }
 
 
@@ -398,7 +427,7 @@ button {
     }
 }
 
-.nota{
+.nota {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -491,14 +520,17 @@ button {
             background-color: rgba(144, 26, 199, 0.329);
             border: 2px solid rgba(144, 26, 199, 0.5);
         }
+
         &.azul {
             background-color: rgba(88, 177, 236, 0.329);
             border: 2px solid rgba(88, 177, 236, 0.5);
         }
+
         &.verde {
             background-color: rgba(62, 241, 86, 0.329);
             border: 2px solid rgba(62, 241, 86, 0.5);
         }
+
         cursor: none;
     }
 
@@ -507,17 +539,19 @@ button {
         width: 2.5vw;
         height: 2.5vw;
 
-        &.rosa{
+        &.rosa {
             background-color: rgba(144, 26, 199, 0.5);
         }
-        &.azul{
+
+        &.azul {
             background-color: rgba(88, 177, 236, 0.5);
         }
-        &.verde{
+
+        &.verde {
             background-color: rgba(62, 241, 86, 0.5);
         }
 
-        
+
         border-radius: 50%;
 
     }
@@ -529,9 +563,15 @@ button {
     gap: 3vh;
     padding: 2vh 2vw;
 
+
+
     h2 {
         font-size: 2vw;
         font-weight: 600;
+
+        @media (max-width: 768px) {
+            font-size: 7vw;
+        }
 
     }
 
@@ -547,6 +587,11 @@ button {
         border-radius: 50%;
         transition: transform 0.3s ease;
 
+        @media (max-width: 768px) {
+            width: 15vw;
+            height: 15vw;
+        }
+
 
         box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
     }
@@ -554,4 +599,6 @@ button {
     .tema:hover {
         transform: scale(1.1);
     }
+
+   
 }
