@@ -26,7 +26,6 @@ const Home = () => {
     // Calculate gap based on scroll position
     const maxGap = 50; // Maximum gap in pixels
     const minGap = 2; // Minimum gap in pixels
-    const gapRange = maxGap - minGap;
     const gap = maxGap - (scrollY * 0.05); // Adjust the multiplier as needed
     const adjustedGap = Math.max(minGap, Math.min(maxGap, gap));
 
@@ -65,7 +64,7 @@ const Home = () => {
                 <HeroParallaxDemo />
             </div>
 
-            <div className='neon-border'>
+            <div className='neon-border lamp'>
                 <LampDemo />
             </div>
         </div>

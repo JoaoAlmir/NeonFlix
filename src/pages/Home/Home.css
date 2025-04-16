@@ -235,3 +235,34 @@ h2 {
     filter: drop-shadow(0 0 40px white);
     font-weight: bold;
 }
+
+@media (max-width: 768px) {
+
+    .neon-border {
+        h2 {
+            font-size: 3.5vh;
+        }
+    }
+
+    .family {
+        h2 {
+            font-size: 5vh;
+        }
+    }
+
+    .background-people {
+        display: none;
+        /* Ensure it is visible */
+        transform: none;
+        /* Adjust or remove parallax effect for mobile */
+        transition: none;
+        /* Simplify transitions for better performance */
+    }
+
+    .tv-people-image {
+        width: 100%;
+        /* Adjust image size for mobile screens */
+        height: auto;
+    }
+    
+}
