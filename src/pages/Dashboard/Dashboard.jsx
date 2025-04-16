@@ -166,7 +166,7 @@ const Dashboard = () => {
                     onMouseEnter={isMobile? null : () => setIsSidebarHovered(true)}
                     onMouseLeave={isMobile? null : () => setIsSidebarHovered(false)}
                 >
-                    <label className={`neonTextLower ${themeColor}`} >{isSidebarHovered ? 'NeonFlix' : 'NF'} </label>
+                    {!isMobile && <label className={`neonTextLower ${themeColor}`} >{isSidebarHovered ? 'NeonFlix' : 'NF'} </label>}
                     <div className='sidebar-menu'>
                         <div className={`icon-sidebar ${themeColor}`} onClick={() => setCurrentTab('filmes')}>
                             <ViewAgendaIcon style={{ color: currentTab === 'filmes' ? (themeColor === 'rosa' ? 'rgb(171, 20, 209)' : themeColor === 'azul' ? 'rgb(89, 167, 255)' : 'rgb(20, 209, 20)') : 'white' }} />
