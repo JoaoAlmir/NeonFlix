@@ -25,6 +25,7 @@ const Dashboard = () => {
     const [currentTab, setCurrentTab] = React.useState('filmes');
     const [currentCategory, setCurrentCategory] = React.useState(null);
     const [isSidebarHovered, setIsSidebarHovered] = React.useState(false);
+    const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 768);
 
     const [topMovies, setTopMovies] = React.useState([]);
     const [popularMovies, setPopularMovies] = React.useState([]);
@@ -158,12 +159,12 @@ const Dashboard = () => {
 
     return (
         <div className='dashboard'>
-            <CustomMouse cursorImage={imgCursor} />
+            { !isMobile && <CustomMouse cursorImage={imgCursor} />}
             <div id='main-container' className={`main-container`} >
                 <div
                     className={`sidebar neon-border  ${themeColor}`}
-                    onMouseEnter={() => setIsSidebarHovered(true)}
-                    onMouseLeave={() => setIsSidebarHovered(false)}
+                    onMouseEnter={isMobile? null : () => setIsSidebarHovered(true)}
+                    onMouseLeave={isMobile? null : () => setIsSidebarHovered(false)}
                 >
                     <label className={`neonTextLower ${themeColor}`} >{isSidebarHovered ? 'NeonFlix' : 'NF'} </label>
                     <div className='sidebar-menu'>
