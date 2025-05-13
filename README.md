@@ -1,8 +1,11 @@
-# React + Vite
+### NeonFlix: Um Projeto Front-end Desktop de Streaming
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Serviço de streaming inspirado na Netflix, mas com uma proposta visual em estilo neon.
 
-Currently, two official plugins are available:
+🔧 Tecnologias Utilizadas:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+⚛️ React: para construir a interface interativa  
+🎨 Aeternity UI: para aprimorar visualmente a experiência do usuário  
+🎥 MovieDB: para fornecer uma base de dados de filmes  
+
+**Acesse o deploy:** [neon-flix.vercel.app](https://neon-flix.vercel.app)
